@@ -59,3 +59,13 @@ public float add(int input1, int input2) {
 >>>>>>> 779018412a0d358e71cd4343fadbf778135f2126
 >>>>>>> edef3e7eb3c86d7c25977048bc6696f35f7d912f
 >>>>>>> 1c6219b963fc3bb890d45410895ef40c6fe74f54
+
+/********************************
+Developer: Ariglen Ismajlaj
+University ID: 230352757
+Function: This function takes two inputs as integers and divides them.
+********************************/
+
+public int div(int a, int b) {
+    return a/b;
+}

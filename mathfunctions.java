@@ -1,4 +1,10 @@
 <<<<<<< HEAD
+
+/********************************
+Developer: Dilax Balatharan
+University ID: 230055331
+Function: This function takes two inputs as integers and returns to multiply the answer
+********************************/
 public int multi(int a, int b){
     return a*b;
 }

@@ -1,4 +1,10 @@
 <<<<<<< HEAD
+public float subtract(float input1, float input2) {
+    float difference = input1 - input2;
+    return difference;
+}
+=======
+<<<<<<< HEAD
 <<<<<<< HEAD
 /********************************
 Developer: Tameem Khan
@@ -47,3 +53,4 @@ public float add(int input1, int input2) {
 =======
 >>>>>>> 779018412a0d358e71cd4343fadbf778135f2126
 >>>>>>> edef3e7eb3c86d7c25977048bc6696f35f7d912f
+>>>>>>> 1c6219b963fc3bb890d45410895ef40c6fe74f54

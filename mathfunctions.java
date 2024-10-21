@@ -5,6 +5,11 @@ Developer: Tameem Khan
 University ID: 230420687
 Function: This function find the maximum value of two outputs
 ********************************/
+/********************************
+Tester: John Reardon
+University ID: 230427826
+Function: This function find the maximum value of two outputs
+********************************/
 public float max(int a, int b){
     if(a>b){
         return a;

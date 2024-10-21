@@ -1,5 +1,10 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+/********************************
+Developer: Tameem Khan
+University ID: 230420687
+Function: This function find the maximum value of two outputs
+********************************/
 public float max(int a, int b){
     if(a>b){
         return a;

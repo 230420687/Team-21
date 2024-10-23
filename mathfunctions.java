@@ -64,6 +64,21 @@ public float add(int input1, int input2) {
 }
 >>>>>>> 514ad1cb27779de874560c5d0fa0fe9ce09c679f
 <<<<<<< HEAD
+/********************************
+Developer: Muhammed Shafein Hashmi
+University ID: 230010178
+Function: This function raises a number to a given power
+********************************/
+/********************************
+Tester: Ariglen Ismajalaja
+University ID: 230427826
+Function: This function raises a number to a given power
+********************************/
+
+
+ public int power(int base, int power){
+    return (int) Math.pow(base, power); 
+}
 =======
 >>>>>>> 779018412a0d358e71cd4343fadbf778135f2126
 >>>>>>> edef3e7eb3c86d7c25977048bc6696f35f7d912f

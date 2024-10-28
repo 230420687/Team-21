@@ -1,3 +1,9 @@
+/********************************
+Developer: Dilax Balatharan
+University ID: 230055331
+Function: Database design
+********************************/
+
 -- Database Creation
 CREATE DATABASE GadgetGradsStock;
 

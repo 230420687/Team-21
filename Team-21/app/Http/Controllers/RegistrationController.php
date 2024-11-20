@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class RegistrationController extends Controller
 {
@@ -14,7 +15,7 @@ class RegistrationController extends Controller
     public function register(Request $request){
         if($request ->isMethod('post')){
             $validInput = $request->validate([
-                'username' => 'required|string',
+                'name' => 'required|string',
                 'email' => 'required|string|email',
                 'password' => 'required|string|min:8',
             ]);
@@ -22,11 +23,17 @@ class RegistrationController extends Controller
  
 
             try{
-                $user = new User();
-                $user->username = $validInput['username'];
-                $user->email = $validInput['email'];
-                $user->password = password_hash($validInput['password'], PASSWORD_DEFAULT);
-                $user->save();
+                User::create([
+                    'name' => $validInput['name'],
+                    'email' => $validInput['email'],
+                    'password' => $validInput['password'], 
+                ]);
+                
+               
+            
+            
+                  
+                
 
 
                 return redirect('/')->with('success', 'You have completed Registration');

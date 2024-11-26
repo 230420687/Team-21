@@ -26,10 +26,11 @@
         </div>
         <nav class="nav-bar">
             <ul>
-                <li><a href="#home">Home</a></li>
+                <li><a href="{{url('/nav')}}">Home</a></li>
                 <li><a href="#products">Products</a></li>
                 <li><a href="#about">About Us</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="{{url('/basket')}}">Basket</a></li>
+    
             </ul>
         </nav>
     </header>

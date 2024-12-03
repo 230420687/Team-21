@@ -44,7 +44,7 @@
             <ul>
                 <li><a href="{{url('/nav')}}">Home</a></li>
                 <li><a href="#products">Products</a></li>
-                <li><a href="#about">About Us</a></li>
+                <li><a href="{{url('/about')}}">About Us</a></li>
                 <li><a href="{{url('/basket')}}">Basket</a></li>
             </ul>
         </nav>
@@ -109,7 +109,9 @@
                     </div>
                     <p>Total: £<span id="basket-total">10.00</span></p>
                     <!-- Button to proceed to checkout -->
-                    <button class="checkout-btn">Proceed to Checkout</button>
+                    <a href="{{ url('/checkout2')}}" class="checkout-btn">
+                        <button class="checkout-btn">Proceed to Checkout</button>
+                    </a>
                     <p>Pay securely with</p>
                     <!-- Payment method icons -->
                     <div class="payment-icons">

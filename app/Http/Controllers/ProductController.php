@@ -14,4 +14,7 @@ class ProductController extends Controller
         // Return a view and pass the data to it
         return view('products.index', compact('products'));
     }
+    public function show($product_id)
+{
+return view('/productdesc', ['product' => Product::find($product_id)]);}
 }

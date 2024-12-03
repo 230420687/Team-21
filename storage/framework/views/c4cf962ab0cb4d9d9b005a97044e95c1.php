@@ -62,8 +62,8 @@
     <h3 class="product-title"> <?php echo e($product->product_name); ?></h3>
     <p class ="product-price"><?php echo e($product->product_price); ?></p>
     <div class="product-buttons">
-  <button class="view-button">View Product</button>
-    <button class="add-button">Add to Basket</button>
+  <button class="view-button" type = "submit" id="viewprod" onclick="window.location='<?php echo e(url('productdesc',$product->product_id)); ?>'">View Product</button>
+    <button class="add-button" id="addbask">Add to Basket</button>
 </div>
 </div>
 </div>

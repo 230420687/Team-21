@@ -15,4 +15,9 @@ Route::get('/products', function(){
     return view('products',[
     'products' => $products]);
 });
+Route::get('/productdesc', function(){
+
+    return view('productdesc');
+})->name("productdesc");
+Route::get('/productdesc/{product_id}', [ProductController::class, 'show'] );
 

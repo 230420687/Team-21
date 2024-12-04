@@ -36,7 +36,7 @@ class LoginController extends Controller
                 Session::put('user_type', 'customer');
                 Session::put('email', $user->email);
 
-                return redirect('/')->with('success', 'Logged in successfully');
+                return redirect('/nav')->with('success', 'Logged in successfully');
             }
         } else {
             $admin = DB::table('admins')->where('email', $request->email)->first();

@@ -12,7 +12,8 @@
     <header>
         <div class="header-content">
             <div class="logo-container">
-                <img src="{{asset('images/GG_higher-resolution.png')}}" alt="Gadget Grads Logo">
+               
+                <img src="{{ asset('images/GG_higher-resolution.png') }}" alt="Gadget Grads Logo">
                 <div class="logo-text">
                     <h1>Gadget Grads</h1>
                     <p>Graduate with better tech!</p>
@@ -24,10 +25,12 @@
         <nav class="nav-bar">
             <ul>
                 <li><a href="{{url('/nav')}}">Home</a></li>
-                <li><a href="#products">Products</a></li>
+                <li><a href="{{url('/product')}}">Products</a></li>
                 <li><a href="{{url('/about')}}">About Us</a></li>
                 <li><a href="{{url('/basket')}}">Basket</a></li>
-                <li><a href="{{url('/contact')}}">Contact us</a></li>
+                <li><a href="{{url('/contact')}}">Contact Us</a></li>
+                
+    
             </ul>
         </nav>
     </header>

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Checkout | Gadget Grads</title>
     <link rel="stylesheet" href="{{asset('css/checkout.css')}}">
+    <link rel="stylesheet" href="{{asset('css/NavBar.css')}}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Lobster&display=swap" rel="stylesheet">
@@ -22,7 +23,7 @@
                     <h2 class="subheading">Graduate with better tech!</h2>
                 </div>
                 <div class="search-container">
-                    <img src="{{asset('images/search.svg')}}" alt="Search Icon" class="search-icon">
+                   
                     <input type="text" class="search-bar" placeholder="Search products and brands" aria-label="Search">
                 </div>
             </div>
@@ -32,16 +33,17 @@
                 <a href="cart.html" class="cart-icon" title="Basket"><img src="{{asset('images/basket.svg')}}" height="30"></a>
             </div>
         </header>
-        <nav>
-            <div class="navbar">
-                <a href="laptops.html">Laptops</a>
-                <a href="accessories.html">Accessories</a>
-                <a href="phones.html">Phones</a>
-                <a href="smart-watch.html">Smart Watch</a>
-                <a href="tablets-ipads.html">Tablets/iPads</a>
-                <a href="deals.html">Deals</a>
-            </div>
+        
+        <nav class="nav-bar">
+            <ul>
+                <li><a href="{{url('/nav')}}">Home</a></li>
+                <li><a href="{{url('/product')}}">Products</a></li>
+                <li><a href="{{url('/about')}}">About Us</a></li>
+                <li><a href="{{url('/basket')}}">Basket</a></li>
+                <li><a href="{{url('/contact')}}">Contact Us</a></li>
+            </ul>
         </nav>
+
     </header>
 
     <div class="checkout-container">

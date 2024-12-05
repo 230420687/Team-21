@@ -1,4 +1,5 @@
-
+<link rel="stylesheet" href="{{asset('css/contact_page.css')}}">
+<script src="{{asset('js/chatbot.js')}}"></script>
 <!DOCTYPE html>
 <html lang="en"></html>
 <html>
@@ -6,17 +7,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="{{asset('css/contact_page.css')}}">
-<script src="{{asset('js/chatbot.js')}}"></script>
-<title>Contact Page</title>
+  <link rel="stylesheet" href="{{asset('css/contact_page.css')}}">
+  <link rel="stylesheet" href="{{asset('css/NavBar.css')}}">
+  <script src="{{asset('js/chatbot.js')}}"></script>
+  <title>Contact Page</title>
 </head>
 <header>
-
-    
+<div class="header-content">
+            <div class="logo-container">
+               
+                <img src="{{ asset('images/GG_higher-resolution.png') }}" alt="Gadget Grads Logo">
+                <div class="logo-text">
+                    <h1>Gadget Grads</h1>
+                    <p>Graduate with better tech!</p>
+                </div>
+            </div>
+            <input type="text" class="search-bar" placeholder="Search products and brands" aria-label="Search">
+            <button id="login-btn" class="login-btn">Log In</button>
+        </div>
         <nav class="nav-bar">
             <ul>
                 <li><a href="{{url('/nav')}}">Home</a></li>
-                <li><a href="#products">Products</a></li>
+                <li><a href="{{url('/products')}}">Products</a></li>
                 <li><a href="{{url('/about')}}">About Us</a></li>
                 <li><a href="{{url('/basket')}}">Basket</a></li>
                 <li><a href="{{url('/contact')}}">Contact Us</a></li>

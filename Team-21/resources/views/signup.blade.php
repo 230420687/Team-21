@@ -27,7 +27,7 @@
         <nav class="nav-bar">
             <ul>
                 <li><a href="{{url('/nav')}}">Home</a></li>
-                <li><a href="#products">Products</a></li>
+                <li><a href="{{url('/product')}}">Products</a></li>
                 <li><a href="{{url('/about')}}">About Us</a></li>
                 <li><a href="{{url('/basket')}}">Basket</a></li>
                 <li><a href="{{url('/contact')}}">Contact Us</a></li>

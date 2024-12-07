@@ -27,39 +27,39 @@
 
       </div>
       <div class="icons">
-          <a href="profile.html" class="user-icon" title="Sign in"><img src="c:\Users\sabri\Downloads\Tablet\Images\user-1.svg" height="30"></a>
-          <a href="wishlist.html" class="wishlist-icon" title="Wishlist"><img src="c:\Users\sabri\Downloads\Tablet\Images\heart.svg" height="30"></a>
-          <a href="cart.html" class="cart-icon" title="Basket"><img src=" c:\Users\sabri\Downloads\Tablet\Images\basket.svg" height="30"></a>
+          <a href="profile.html" class="user-icon" title="Sign in"><img src="images\user-1.svg" height="30"></a>
+          <a href="wishlist.html" class="wishlist-icon" title="Wishlist"><img src="images\heart.svg" height="30"></a>
+          <a href="cart.html" class="cart-icon" title="Basket"><img src=" images\basket.svg" height="30"></a>
       </div>
   </header>
 
         <nav id = "gadgetGrads">
         <div class="topnav">
-      <a class="active" href="#Tablets">Tablets</a>
-      <a href="Laptops.html">Laptops</a>
-      <a href="Accessories.html">Accessories</a>
-      <a href="Phones.html">Phones</a>
-      <a href="Smartwatch.html">Smartwatch</a>
+      <a class="active" href= "{{url('Tablets')}}">Tablets</a>
+      <a href= "{{url('Laptops')}}">Laptops</a>
+      <a href= "{{url('Accessories')}}">Accessories</a>
+      <a href="{{url('Phones')}}">Phones</a>
+      <a href="{{url('Smartwatches')}}">Smartwatches</a>
     </div>
 </nav>  
 
 <div class="sort-section">
   <label for="sort">Sort by:</label>
   <select id="sort" name="sort">
-    <option value="default">Default</option>
-    <option value="price-low-to-high">Price: Low to High</option>
-    <option value="price-high-to-low">Price: High to Low</option>
-    <option value="name-a-to-z">Name: A to Z</option>
-    <option value="name-z-to-a">Name: Z to A</option>
+    <option {{request()->default}} value="default">Default</option>
+    <option {{request()->lowtohigh}} value="price-low-to-high">Price: Low to High</option>
+    <option {{request()->hightolow}} value="price-high-to-low">Price: High to Low</option>
+    <option {{request()->atoz}} value="name-a-to-z">Name: A to Z</option>
+    <option {{request()->ztoa}} value="name-z-to-a">Name: Z to A</option>
   </select>
 </div>
 
 @foreach ($products as $product)
 <div class = "product-section">
   <div class="product">
-   <!--<img src="c:\Users\sabri\Downloads\Tablet\Images\iPadAir.svg" alt="Product" class="iPadAir">-->
+   <img src= "Images\{{$product->img_id}}.jpg" alt="Product" class="iPadAir">
    <div class ="product-info">
-    <h3 class="product-title"> {{$product->product_name}}</h3>
+    <h3 class="product-title"> {{$product->product_name}}</h3>  
     <p class ="product-price">{{$product->product_price}}</p>
     <div class="product-buttons">
   <button class="view-button" type = "submit" id="viewprod" onclick="window.location='{{url('productdesc',$product->product_id)}}'">View Product</button>

@@ -6,23 +6,25 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+        
         // Retrieve all products from the database
         $products = Product::all();
 
+        $inputvalue = dump(request()->get('sort'));
+        if($inputvalue != 'default'){
+        $products = $products->sortBy($inputvalue);
+        $result = compact('products');
+        }
+        else{
+            $result = compact('products');
+        }
         // Return a view and pass the data to it
-        return view('products.index', compact('products'));
+        return view('products.index', $result);
     }
     public function show($product_id){
 return view('/productdesc', ['product' => Product::find($product_id)]);}
 
-    public function showlap(){
-        #$products = Product::where('category_id',1)->get()->toArray();
-
-        $products = Product::all();
-        return view('/Laptops', compact('products'));
-        #return view('/Laptops',compact('products'));
-    }
 }
 ?>

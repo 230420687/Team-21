@@ -45,13 +45,17 @@
 
 <div class="sort-section">
   <label for="sort">Sort by:</label>
+  <form method="POST" action="/productssort">
+  @csrf
   <select id="sort" name="sort">
-    <option {{request()->default}} value="default">Default</option>
-    <option {{request()->lowtohigh}} value="price-low-to-high">Price: Low to High</option>
-    <option {{request()->hightolow}} value="price-high-to-low">Price: High to Low</option>
-    <option {{request()->atoz}} value="name-a-to-z">Name: A to Z</option>
-    <option {{request()->ztoa}} value="name-z-to-a">Name: Z to A</option>
+    <option {{request()->sortby}} value="default">Default</option>
+    <option {{request()->sortby}} value="priceasc">Price: Low to High</option>
+    <option {{request()->sortby}} value="pricedesc">Price: High to Low</option>
+    <option {{request()->sortby}} value="nameasc">Name: A to Z</option>
+    <option {{request()->sortby}} value="namedesc">Name: Z to A</option>
   </select>
+  <button type="submit">Sort!</button>
+</form>
 </div>
 
 @foreach ($products as $product)

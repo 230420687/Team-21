@@ -61,6 +61,28 @@ Route::get('/Accessories', function(){
     return view('Accessories', ['products' => $products]);
 })->name("Accessories");
 
+Route::post('/productssort',function() {
+    $products = DB::table('products')->get();
+    $sortby = request('sort');
+    echo $sortby;
+    if($sortby == 'priceasc'){
+        $productsorted = $products->sortBy('product_price');
+    }
+    if($sortby == 'pricedesc'){
+        $productsorted  = $products->sortByDesc('product_price');
+    }
+    if($sortby == 'nameasc'){
+        $productsorted  = $products->sortBy('product_name');
+    }
+    if($sortby == 'namedesc'){
+        $productsorted  = $products->sortByDesc('product_name');
+    }
+    if($sortby == 'default'){
+        $productsorted = $products;
+    }
+
+    return view('products', ['products' => $productsorted ]);
+});
 #Route::get('/Laptops', [ProductController::class, 'showlap']);
 Route::get('/productdesc/{product_id}', [ProductController::class, 'show'] );
 

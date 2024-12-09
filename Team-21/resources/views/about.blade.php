@@ -6,10 +6,12 @@
     <title>Gadget Grads - Login/Sign Up</title>
     <link rel="stylesheet" href="{{asset('css/NavBar.css')}}">
     <link rel="stylesheet" href="{{asset('css/AboutUs.css')}}">
+    <link rel="stylesheet" href="{{asset('css/checkout.css')}}">
     <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
+        <!-- logo and header -->
         <div class="header-content">
             <div class="logo-container">
                
@@ -19,13 +21,16 @@
                     <p>Graduate with better tech!</p>
                 </div>
             </div>
-            <input type="text" class="search-bar" placeholder="Search products and brands" aria-label="Search">
-            <button id="login-btn" class="login-btn">Log In</button>
+            
+
+            
         </div>
+        <!-- nav -->
+
         <nav class="nav-bar">
             <ul>
-                <li><a href="{{url('/nav')}}">Home</a></li>
-                <li><a href="{{url('/product')}}">Products</a></li>
+                <li><a href="{{url('/home')}}">Home</a></li>
+                <li><a href="{{url('/products')}}">Products</a></li>
                 <li><a href="{{url('/about')}}">About Us</a></li>
                 <li><a href="{{url('/basket')}}">Basket</a></li>
                 <li><a href="{{url('/contact')}}">Contact Us</a></li>
@@ -33,6 +38,12 @@
     
             </ul>
         </nav>
+        <!-- icons -->
+        <div class="icons">
+                <a href="{{url('/nav')}}" class="user-icon" title="Sign in"><img src="{{asset('images/user.svg')}}" height="30"></a>
+                <a href="wishlist.html" class="wishlist-icon" title="Wishlist"><img src="{{asset('images/heart.svg')}}" height="30"></a>
+                <a href="{{url('/basket')}}"class="cart-icon" title="Basket"><img src="{{asset('images/basket.svg')}}" height="30"></a>
+        </div>
     </header>
     <main>
         <section class="about-us">

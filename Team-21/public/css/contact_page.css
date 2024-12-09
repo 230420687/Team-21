@@ -183,4 +183,31 @@
       color: red;
       font-size: 0.9em;
     }
+
+    .search-bar {
+      width: 521px;
+      height: 26px;
+      flex-shrink: 0;
+      border-radius: 10px;
+      opacity: 0.75;
+      background: var(--secondary-color);
+      border: none;
+      padding: 5px 10px;
+      color: #9a9a9a;
+  }
+  
+  .search-bar::placeholder {
+      color: #a0a0a0;
+  }
+  
+  .search-button{
+      flex-shrink: 0;
+      border-radius: 10px;
+      opacity: 0.75;
+      background: var(--secondary-color);
+      border: none;
+      padding: 5px 10px;
+      color: #9a9a9a;
+  
+  }
  

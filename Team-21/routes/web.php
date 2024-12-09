@@ -7,10 +7,10 @@ use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\BasketController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\ProductController;
 
-
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', function(){
+    return redirect('/nav');
 });
 
 //return search bar form
@@ -33,6 +33,9 @@ Route::get('/login', function () {
 
 // Process the login request
 Route::post('/login', [LoginController::class, 'login'])->name('login.post');
+
+//Route for logout
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 // Show the registration form
 Route::get('/register', function () {
@@ -73,12 +76,101 @@ Route::post('/contact', [ContactController::class, 'submit'])->name('contact.sub
 
 
 
-// Basket routes
-// Route::middleware('auth')->group(function () {
-//     Route::get('/basket', [BasketController::class, 'index'])->name('basket.index');
-//     Route::post('/basket/add/{productId}', [BasketController::class, 'add'])->name('basket.add');
-//     Route::post('/basket/update/{id}', [BasketController::class, 'updateQuantity'])->name('basket.update');
-//     Route::delete('/basket/remove/{id}', [BasketController::class, 'remove'])->name('basket.remove');
-//     Route::delete('/basket/clear', [BasketController::class, 'clear'])->name('basket.clear');
 
+
+
+
+
+
+// Basket Page
+Route::get('/basket', [BasketController::class, 'index'])->name('basket.index');
+
+// Add Product to Basket
+Route::post('/basket/add', [BasketController::class, 'add'])->name('basket.add');
+
+// Update Product Quantity in Basket
+Route::put('/basket/{item}', [BasketController::class, 'update'])->name('basket.update');
+
+// Remove Product from Basket
+Route::delete('/basket/{item}', [BasketController::class, 'remove'])->name('basket.remove');
+
+// Clear Basket
+Route::delete('/basket/clear', [BasketController::class, 'clear'])->name('basket.clear');
+
+
+Route::get('/home',  function(){
+    return view('home');
+});
+
+
+
+Route::get('/products', function(){
+    $products = DB::table('products')->get();
+    return view('products',['products' => $products]);
+});
+Route::get('/productdesc', function(){
+
+    return view('productdesc');
+})->name("productdesc");
+
+Route::post('products', [ProductController::class, 'index']
+)->name("products.index");
+
+
+
+// Route for Laptops
+Route::get('/Laptops', function(){
+    $products = DB::table('products')->get();
+    #$products = $products::where('category_id',1)->get();
+    return view('Laptops', ['products' => $products]);
+})->name("Laptops");
+// Route for Smartwatches
+Route::get('/Smartwatches', function(){
+    $products = DB::table('products')->get();
+    #$products = $products::where('category_id',1)->get();
+    return view('Smartwatches', ['products' => $products]);
+})->name("Smartwatches");
+//Route for hpones
+Route::get('/Phones', function(){
+    $products = DB::table('products')->get();
+    #$products = $products::where('category_id',1)->get();
+    return view('Phones', ['products' => $products]);
+})->name("Phones");
+//Route for Tablets
+Route::get('/Tablets', function(){
+    $products = DB::table('products')->get();
+    #$products = $products::where('category_id',1)->get();
+    return view('Tablets', ['products' => $products]);
+})->name("Tablets");
+//Route for Accessories
+Route::get('/Accessories', function(){
+    $products = DB::table('products')->get();
+    #$products = $products::where('category_id',1)->get();
+    return view('Accessories', ['products' => $products]);
+})->name("Accessories");
+
+Route::post('/productssort',function() {
+    $products = DB::table('products')->get();
+    $sortby = request('sort');
+    echo $sortby;
+    if($sortby == 'priceasc'){
+        $productsorted = $products->sortBy('product_price');
+    }
+    if($sortby == 'pricedesc'){
+        $productsorted  = $products->sortByDesc('product_price');
+    }
+    if($sortby == 'nameasc'){
+        $productsorted  = $products->sortBy('product_name');
+    }
+    if($sortby == 'namedesc'){
+        $productsorted  = $products->sortByDesc('product_name');
+    }
+    if($sortby == 'default'){
+        $productsorted = $products;
+    }
+
+    return view('products', ['products' => $productsorted ]);
+});
+#Route::get('/Laptops', [ProductController::class, 'showlap']);
+Route::get('/productdesc/{product_id}', [ProductController::class, 'show'] );
 

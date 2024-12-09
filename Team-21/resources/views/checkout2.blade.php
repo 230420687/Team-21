@@ -13,6 +13,7 @@
 
 <body>
     <header>
+        <!-- logo and header -->
         <header class="header">
             <div class="logo-container">
                 <a href="index.html" class="logo">
@@ -22,22 +23,20 @@
                     <h1 class="title">GADGET GRADS</h1>
                     <h2 class="subheading">Graduate with better tech!</h2>
                 </div>
-                <div class="search-container">
-                   
-                    <input type="text" class="search-bar" placeholder="Search products and brands" aria-label="Search">
-                </div>
+
             </div>
+            <!-- icons -->
             <div class="icons">
-                <a href="profile.html" class="user-icon" title="Sign in"><img src="{{asset('images/user.svg')}}" height="30"></a>
+                <a href="{{url('/nav')}}" class="user-icon" title="Sign in"><img src="{{asset('images/user.svg')}}" height="30"></a>
                 <a href="wishlist.html" class="wishlist-icon" title="Wishlist"><img src="{{asset('images/heart.svg')}}" height="30"></a>
-                <a href="cart.html" class="cart-icon" title="Basket"><img src="{{asset('images/basket.svg')}}" height="30"></a>
-            </div>
+                <a href="{{url('/basket')}}"class="cart-icon" title="Basket"><img src="{{asset('images/basket.svg')}}" height="30"></a>
+        </div>
         </header>
-        
+        <!-- nav bar -->
         <nav class="nav-bar">
             <ul>
-                <li><a href="{{url('/nav')}}">Home</a></li>
-                <li><a href="{{url('/product')}}">Products</a></li>
+                <li><a href="{{url('/home')}}">Home</a></li>
+                <li><a href="{{url('/products')}}">Products</a></li>
                 <li><a href="{{url('/about')}}">About Us</a></li>
                 <li><a href="{{url('/basket')}}">Basket</a></li>
                 <li><a href="{{url('/contact')}}">Contact Us</a></li>
@@ -45,6 +44,7 @@
         </nav>
 
     </header>
+    <!-- check out form -->
 
     <div class="checkout-container">
         <h3>Checkout</h3>
@@ -107,7 +107,7 @@
             </div>
 
             <div class="form-group">
-                <input type="month" id="expiryDate" name="expiryDate" value="{{ old('expiryDate') }}" required>
+                <input type="month" id="expiryDate" name="expiryDate" value="{{ old('expiryDate') }}" placeholder="yyyy-mm" required>
                 @error('expiryDate')
                     <p class="error-message">{{ $message }}</p>
                 @enderror

@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <div class="empty-basket"> 
                 <p>Your basket is empty</p> 
                 <p>When you add items they'll appear here</p> 
-                <a href="HomePage.html" class="continue-shopping">Continue shopping</a> 
+                <a href="{{url('/products')}}" class="continue-shopping">Continue shopping</a> 
             </div>`; 
 
         document.querySelector('h2').style.display = 'none'; // Hide the basket header

@@ -11,13 +11,16 @@ use Illuminate\Support\Facades\Session;
 
 class LoginController extends Controller
 {
+    //show the login form
     public function showLoginForm()
     {
         return view('auth.login');
     }
 
+    //taking the credentials and checking against the database
     public function login(Request $request)
     {
+        //validate the inputs
         $request->validate([
             'email' => ['required', 'email'],
             'password' => ['required'],
@@ -26,9 +29,9 @@ class LoginController extends Controller
 
         $hashedPassword = Hash::make($request->password);
 
+        //checking if it is a customer or admin
         if($request->user_type === 'customer') {
-            // $user = DB::table('users')->where('email', $request->email)->first();
-            // if($user && Hash::check($request->password, $user->user_password)) {
+
             if(Auth::guard('web')->attempt(['email' => $request->email, 'password' => $request->password])){
                 $user = Auth::guard('web')->user();
                 // Start session and store user info
@@ -36,7 +39,7 @@ class LoginController extends Controller
                 Session::put('user_type', 'customer');
                 Session::put('email', $user->email);
 
-                return redirect('/nav')->with('success', 'Logged in successfully');
+                return redirect('/home')->with('success', 'Logged in successfully');
             }
         } else {
             $admin = DB::table('admins')->where('email', $request->email)->first();
@@ -46,15 +49,18 @@ class LoginController extends Controller
                 Session::put('user_type', 'admin');
                 Session::put('email', $admin->email);
 
-                return redirect('/')->with('success', 'Logged in successfully');
+                return redirect('/home')->with('success', 'Logged in successfully');
             }
         }
 
+        //return with the errors
         return back()->withErrors([
             'email' => 'The provided credentials do not match our records.',
         ]);
     }
 
+
+    //logout the current user logged in
     public function logout(Request $request)
     {
         Session::flush(); // Remove all session data

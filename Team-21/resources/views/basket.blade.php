@@ -25,22 +25,19 @@
                     <h1 class="title">GADGET GRADS</h1>
                     <h2 class="subheading">Graduate with better tech!</h2>
                 </div>
-                <div class="search-container">
-                    
-                    <input type="text" class="search-bar" placeholder="Search products and brands" aria-label="Search">
-                </div>
+
             </div>
             <div class="icons">
-                <a href="profile.html" class="user-icon" title="Sign in"><img src="{{asset('images/user.svg')}}" height="30"></a>
+                <a href="{{url('/nav')}}" class="user-icon" title="Sign in"><img src="{{asset('images/user.svg')}}" height="30"></a>
                 <a href="wishlist.html" class="wishlist-icon" title="Wishlist"><img src="{{asset('images/heart.svg')}}" height="30"></a>
-                <a href="cart.html" class="cart-icon" title="Basket"><img src="{{asset('images/basket.svg')}}" height="30"></a>
-            </div>        
+                <a href="{{url('/basket')}}"class="cart-icon" title="Basket"><img src="{{asset('images/basket.svg')}}" height="30"></a>
+        </div>      
         </div>
         <!-- Navigation bar with links to various sections -->
         <nav class="nav-bar">
             <ul>
-                <li><a href="{{url('/nav')}}">Home</a></li>
-                <li><a href="{{url('/product')}}">Products</a></li>
+                <li><a href="{{url('/home')}}">Home</a></li>
+                <li><a href="{{url('/products')}}">Products</a></li>
                 <li><a href="{{url('/about')}}">About Us</a></li>
                 <li><a href="{{url('/basket')}}">Basket</a></li>
                 <li><a href="{{url('/contact')}}">Contact Us</a></li>
@@ -61,12 +58,12 @@
                 <div class="basket-item mb-4 p-3 border rounded">
                     <div class="product-info d-flex align-items-start">
                         <!-- Product image -->
-                        <img src="{{ $item->product->image }}" alt="Product Image" class="product-image me-3">
+                        <img src="Images\{{$item->product->img_id}}.jpg" alt="Product Image" class="product-image me-3">
                         
                         <!-- Product Details -->
                         <div class="product-details">
                             <!-- Name and Price -->
-                            <div class="product-name fw-bold">{{ $item->product->name }}</div>
+                            <div class="product-name fw-bold">{{ $item->product->product_name }}</div>
                             <div class="product-details-row d-flex align-items-center">
                                 <div class="quantity-section me-3">
                                     <label for="quantity">Quantity:</label>
@@ -86,7 +83,7 @@
                                 </form>
                                 
                                 <!-- Price -->
-                                <div class="price ms-auto">£{{ number_format($item->product->price, 2) }}</div>
+                                <div class="price ms-auto">£{{ number_format($item->product->product_price, 2) }}</div>
                             </div>
 
                             <!-- Delivery/Collection Information -->
@@ -104,7 +101,7 @@
                         </div>
                     </div>
                 </div>
-                @php $total += $item->product->price * $item->quantity; @endphp
+                @php $total += $item->product->product_price * $item->quantity; @endphp
                 @endforeach
             </div>
 

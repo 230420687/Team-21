@@ -8,6 +8,7 @@
     <!-- Use Laravel's asset helper for CSS -->
     <link rel="stylesheet" href="{{ asset('css/NavBar.css') }}">
     <link rel="stylesheet" href="{{ asset('css/LoginPopUp.css') }}">
+    <link rel="stylesheet" href="{{asset('css/Home.css')}}">
     <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -21,13 +22,23 @@
                     <p>Graduate with better tech!</p>
                 </div>
             </div>
-            <input type="text" class="search-bar" placeholder="Search products and brands" aria-label="Search">
+            <!-- searchbar -->
+            <form action="{{route('search')}}" method="GET">
+                <input type="text"  class= "search-bar" name="query" placeholder="Search for products by name or description" required>
+                <button  class = "search-button" type="submit">Search</button>
+            </form>
+            <!-- logout button -->
             <button id="login-btn" class="login-btn">Log In</button>
+            <form action="{{route('logout')}}" method="POST">
+                @csrf
+                <button id="logout-btn" class="login-btn">Logout</button>
+            </form>
         </div>
+        <!-- nav-bar -->
         <nav class="nav-bar">
             <ul>
-                <li><a href="{{url('/nav')}}">Home</a></li>
-                <li><a href="{{url('/product')}}">Products</a></li>
+                <li><a href="{{url('/home')}}">Home</a></li>
+                <li><a href="{{url('/products')}}">Products</a></li>
                 <li><a href="{{url('/about')}}">About Us</a></li>
                 <li><a href="{{url('/basket')}}">Basket</a></li>
                 <li><a href="{{url('/contact')}}">Contact Us</a></li>
@@ -35,6 +46,7 @@
     
             </ul>
         </nav>
+        
     </header>
     <main>
     </main>
@@ -146,6 +158,10 @@
             </div>
         </div>
     </div>
+
+        
+  
+
 
     <!-- Use Laravel's asset helper for JavaScript -->
     <script src="{{ asset('js/JavaScript_pop-up.js') }}"></script>

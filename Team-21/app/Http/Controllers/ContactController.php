@@ -22,7 +22,7 @@ class ContactController extends Controller
             'message' => 'required|min:10|max:1000'
         ]);
 
-         // Here we'll add email sending logic once you're ready for that part
+         
 
         // Redirect back with success message
         return back()->with('success', 'Thank you for your message. We will get back to you soon!');

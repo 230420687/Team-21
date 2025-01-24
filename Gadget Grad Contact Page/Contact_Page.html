@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en"></html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="contact_page.css">
+  <script src="chatbot.js"></script>
+  <title>Contact Page</title>
+</head>
+<body>
+<div class="container">
+    <img src="postbox-objects.gif" alt="email image">
+    <div class="container-text">
+      <form action="/verified_splash_screen.html">
+          <h2>Contact Form:</h2>
+          <label for="name">Your Name:</label><br>
+          <input type="text" id="name" name="name" placeholder="Preferred Name"><br>
+          <label for="email">Your Email Address:</label><br>
+          <input type="email" id="email" name="email" placeholder="@your email address"><br>
+          <label for="pwho">
+          Who do you want to speak to?
+          </label>
+          <select id="pwho" name="pwho" title="If you know the team or person you want to contact please
+            select as your message will be directed sooner" placeholder = "">
+            <option value="hr">HR</option>
+            <option value="admin">Admin Team</option>
+            <option value="services">Customer Services</option>
+            <option value="management">Stock Management</option>
+            <option value="ceo">CEO</option>
+            <option value="nsure">Not Sure</option>
+          </select>
+          <h5>If not send an email openly<br> It will still be directed to the right person</br></h5>
+          <label for="ymessage">Type Your Message: </label>
+          <textarea></textarea>
+          <input type="submit" value="Submit">
+      </form>
+    </div>
+</div>
+<div class="chat-container">
+<div class="chat-display" id="chat-display"></div>
+<div class="chat-input">
+    <input type="text" id="user-input" placeholder="Say hello...">
+    <button id="send-button">Send</button>
+</div>
+</body>
+</html>

@@ -1,0 +1,477 @@
+/* Universals */
+:root {
+  --primary-color: #0B59A2;
+  --secondary-color: #D9D9D9;
+  --font-family: 'Dela Gothic One', sans-serif;
+}
+body {
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f5f7fa;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+/* TopDealsBanner Section 1 */
+.TopDealsBanner {
+  width: 100%;
+  height: 400px;
+  margin-bottom: 25px;
+  position: relative;
+  display: flex;
+  background-color: #ffffff;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  overflow: hidden;
+  gap: 2.5%;
+}
+
+/* Call To Action Banner */
+.Cta {
+  flex: 0 0 70%;
+  position: relative;
+  height: 100%;
+  background: linear-gradient(180deg, #7296F2 0%, #42578C 100%);
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+
+.BigCTAimg {
+  width: 100%;
+  height: 105%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.RecShopNow {
+  width: 120px;
+  height: 40px; /*These W & Hght controls the box size around "Shop Now"*/
+  position: absolute;
+  top: 200px;
+  left: 20px;
+  background: white;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  font-weight: bold;
+  color: #041237;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+
+.RecShopNow:hover {
+  background-color: #ffffff;
+  color: #1444bb;
+  text-decoration: underline;
+}
+
+.PerformanceAndPortability {
+  position: absolute;
+  top: 50px;
+  left: 20px;
+  color: white;
+  line-height: 1.5;
+  word-wrap: break-word;
+  z-index: 2;
+}
+/* "Performance and Portability<br/> all in one" */
+.PerformanceAndPortability span:first-child{
+  font-size: 32px;
+  font-weight: bold;
+}
+
+/* New Deals Section */
+.NewDeals {
+  flex: 1;
+  position: relative;
+  height: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  background-color: #42578C;
+}
+
+.NewDealsimg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.NewInLaptops {
+  position: absolute;
+  top: 270px;
+  left: 20px;
+  z-index: 3;
+  color: white;
+  font-size: 32px;
+  line-height: 1.2;
+}
+
+/* TopCategories Section 2 */
+.Page1 { 
+  border-radius: 0; 
+  display: flex; 
+  flex-direction: column; 
+}
+
+.view-all-wrapper { 
+  align-self: end; 
+  z-index: 10; 
+  display: flex; 
+  width: 100%; 
+  flex-direction: column; 
+  font-size: 16px; 
+  color: #222; 
+  font-weight: 500; 
+  text-align: right; 
+  line-height: 1; 
+  margin: 6px -1200px 0 0; 
+}
+
+.view-all-link { 
+  align-self: end; 
+  display: flex; 
+  align-items: start; 
+  gap: 6px; 
+}
+
+.view-all-icon { 
+  aspect-ratio: 1; 
+  object-fit: contain; 
+  width: 18px; 
+}
+
+.header-divider { 
+  background-color: #ededed; 
+  margin-top: 21px; 
+  width: 1198px; 
+  max-width: 100%; 
+  height: 1px; 
+  border: 1px solid #ededed; 
+}
+
+.title-wrapper { 
+  display: flex; 
+  flex-direction: column; 
+  font-size: 24px; 
+  font-weight: 700; 
+  line-height: 1; 
+}
+
+.title-text { 
+  color: #222; 
+}
+
+.title-highlight { 
+  color: var(--primary-color); 
+}
+
+.title-underline { 
+  background-color: var(--primary-color); 
+  min-height: 3px; 
+  margin-top: 16px; 
+  width: 281px; 
+  border: 3px solid var(--primary-color); 
+}
+
+
+
+/* Top Categories */
+.categories-grid { 
+  display: flex; 
+  width: 98.5%; 
+  gap: 20px; 
+  flex-wrap: wrap; 
+  justify-content: space-between; 
+  margin: 27px 0 0 16px; 
+  background: linear-gradient(to right, #f8f9fa, #ffffff);
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  overflow-x: hidden;
+}
+
+.items-container {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  gap: 1.5rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex-wrap: wrap;
+}
+
+.category-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 80px;
+  padding: 0.8rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  animation: fadeIn 0.5s ease-out;
+  transition: transform 0.3s ease;
+
+
+  width: 138px;
+  height: 138px;
+  object-fit: contain;
+  aspect-ratio: 1;
+  border-radius: 50%;
+}
+
+
+
+
+.category-icon-wrapper {
+  background: #f8f9fa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 80px;
+  height: 80px; 
+  padding: 0.8rem; 
+  transition: all 0.3s ease;
+  border-radius: 50%;
+
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+
+.category-label {
+  font: 400 16px/1 Inter, sans-serif;
+  color: #333;
+  text-align: center;
+  margin-top: 12px;
+  transition: color 0.3s ease;
+}
+
+.category-icon {
+  object-fit: contain;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+.category-icon-wrapper img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Hover Effects */
+.category-item:hover .category-icon-wrapper {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  background: #ffffff;
+}
+
+.category-item:hover .category-icon {
+  transform: scale(1.25);
+}
+
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .category-items {
+    gap: 1rem;
+    justify-content: flex-start;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+    padding-bottom: 10px;
+    flex-wrap: nowrap;
+    scroll-snap-type: x mandatory;
+  }
+
+  .category-item {
+    min-width: 80px;
+    padding: 0.8rem;
+    scroll-snap-align: center;
+  }
+
+  .category-icon-wrapper {
+    width: 80px;
+    height: 80px;
+    padding: 0.8rem;
+  }
+
+  .category-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .category-label {
+    font-size: 0.8rem;
+  }
+
+  .arrow-icon {
+    display: block;
+  }
+}
+
+@media (max-width: 991px) {
+  .categories-header {
+    margin-right: 6px;
+    padding-right: 20px;
+  }
+
+  .view-all-wrapper,
+  .categories-grid,
+  .category-items {
+    max-width: 100%;
+  }
+
+  .header-divider {
+    margin-right: 2px;
+  }
+}
+
+/* Animations */
+#pulse {
+  animation: pulse 2s infinite;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+
+/* PAGE 2 */
+.Page2 {
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  font-family: Kanit, sans-serif;
+  padding: 31px 0 78px;
+}
+.header-wrapper {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  font-size: 32px;
+  color: var(--primary-color);
+  padding: 0 10px 0 40px;
+}
+.banner-image {
+  aspect-ratio: 3.72;
+  object-fit: contain;
+  width: 100%;
+  border-radius: 0;
+}
+.section-popular {
+  align-self: center;
+  display: flex;
+  max-width: 100%;
+  align-items: start;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding-top: 50px;
+  margin: 0px;
+}
+.popular-title {
+  margin-top: 11px;
+}
+
+.header-icon {
+  aspect-ratio: 1;
+  object-fit: contain;
+  width: 24px;
+}
+.products-grid {
+  align-self: center;
+  display: flex;
+  width: 100%;
+  max-width: 1174px;
+  gap: 20px;
+  font-size: 25px;
+  color: #000;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 61px 0 0 11px;
+}
+.product-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.product-image-placeholder {
+  background-color: #d9d9d9;
+  align-self: stretch;
+  padding: 18px 18px 39px;
+}
+.product-title {
+  font-size: 20px;
+  z-index: 10;
+}
+.product-price {
+  margin-top: 23px;
+}
+.navigation-icon {
+  aspect-ratio: 1;
+  object-fit: contain;
+  width: 48px;
+  margin: auto 0;
+}
+@media (max-width: 991px) {
+  .header-wrapper {
+    max-width: 100%;
+    padding-left: 20px;
+  }
+  .banner-image {
+    max-width: 100%;
+  }
+  .section-header {
+    margin: 40px 10px 0 0;
+  }
+  .products-grid {
+    max-width: 100%;
+    margin-top: 40px;
+  }
+}
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}

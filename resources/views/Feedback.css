@@ -1,0 +1,90 @@
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+.feedback-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 25px;
+    background: linear-gradient(180deg, #6384e4 0%, #8CA9F2 100%);
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e1e8ff;
+}
+
+.feedback-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 25px;
+    border-radius: 15px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+label {
+    color: #6384e4;
+    font-size: 17px;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+    padding-bottom: 5px;
+}
+
+/* form inputs */
+input[type="text"],
+input[type="email"],
+textarea,
+select {
+    padding: 12px;
+    border: 1px solid rgba(99, 132, 228, 0.2);
+    border-radius: 8px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: #6384e4;
+    box-shadow: 0 0 0 3px rgba(99, 132, 228, 0.1);
+}
+
+textarea {
+    min-height: 125px;
+    resize: vertical;
+}
+
+/* button styles */
+.submit-btn {
+    background: #6384e4;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    align-self: flex-start;
+}
+
+.submit-btn:hover {
+    background: #4a6cd0;
+    transform: translateY(-1px);
+}
+
+.feedback-heading {
+    color: white;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}

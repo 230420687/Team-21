@@ -212,13 +212,13 @@ Route::delete('/wishlist/{item}', [WishListController::class, 'remove'])->name('
 // Clear wish
 Route::delete('/wishlist/clear', [WishListController::class, 'clear'])->name('wishlist.clear');
 
-
+//creating a new product
 Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
 Route::post('/products/store', [ProductController::class, 'store'])->name('products.store');
 
 
 
-
+//upadting stock
 Route::get('/products/{product}/update', [ProductController::class, 'update'])->name('products.update');
 Route::post('/products/{product}/updateStock', [ProductController::class, 'updateStock'])->name('products.updateStock');
 

@@ -6,12 +6,13 @@
     <title>Checkout | Gadget Grads</title>
     <link rel="stylesheet" href="{{asset('css/checkout.css')}}">
     <link rel="stylesheet" href="{{asset('css/NavBar.css')}}">
+    <link rel="stylesheet" href="{{asset('css/Addingproduct.css')}}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Lobster&display=swap" rel="stylesheet">
 </head>
 
-<body>
+
     <header>
         <!-- logo and header -->
         <header class="header">
@@ -26,14 +27,14 @@
 
             </div>
             <!-- icons -->
-            <div class="icons">
+            <!-- <div class="icons">
                 <a href="{{url('/nav')}}" class="user-icon" title="Sign in"><img src="{{asset('images/user.svg')}}" height="30"></a>
                 <a href="{{url('/wishlist')}}" class="wishlist-icon" title="Wishlist"><img src="{{asset('images/heart.svg')}}" height="30"></a>
                 <a href="{{url('/basket')}}"class="cart-icon" title="Basket"><img src="{{asset('images/basket.svg')}}" height="30"></a>
-        </div>
+        </div> -->
         </header>
         <!-- nav bar -->
-        <nav class="nav-bar">
+        <!-- <nav class="nav-bar">
             <ul>
                 <li><a href="{{url('/home')}}">Home</a></li>
                 <li><a href="{{url('/products')}}">Products</a></li>
@@ -41,89 +42,83 @@
                 <li><a href="{{url('/basket')}}">Basket</a></li>
                 <li><a href="{{url('/contact')}}">Contact Us</a></li>
             </ul>
-        </nav>
+        </nav> -->
 
     </header>
-    <!-- check out form -->
 
-    <div class="checkout-container">
-        <h3>Checkout</h3>
-        <form id="checkoutForm" method="POST" action="{{ route('checkout.verify') }}">
-           @csrf
-            <div class="form-group">
-                <input type="text" id="fullName" name="fullName" value="{{ old('fullName') }}" placeholder="Full Name" required>
-                @error('fullName')
+    <body>
+    <!-- adding form -->
+
+    <div class="form-container">
+        <h2>Stock Inventory</h2>
+        <form id="managementForm" method="POST" action="{{ route('products.store') }}">
+        @csrf
+        <div class="form-group">
+                <label for="product-name">Product Name</label>
+                <input type="text" id="product-name" name="product_name" value="{{ old('product_name') }}" required>
+                @error('product_name')
                     <p class="error-message">{{ $message }}</p>
                 @enderror
             </div>
 
             <div class="form-group">
-                <input type="email" id="email" name="email" value="{{ old('email') }}" placeholder="Email" required>
-                @error('email')
+                <label for="product-description">Product Description</label>
+                <input type="text" id="product-description" name="product_description" value="{{ old('product_description') }}" required>
+                @error('product_description')
                     <p class="error-message">{{ $message }}</p>
                 @enderror
             </div>
 
             <div class="form-group">
-                <input type="tel" id="phone" name="phone" value="{{ old('phone') }}" placeholder="Phone Number" required>
-                @error('phone')
+                <label for="product-price">Product Price</label>
+                <input type="number" id="product-price" name="product_price" value="{{ old('product_price') }}" required min="0" step="0.01">
+                @error('product_price')
                     <p class="error-message">{{ $message }}</p>
                 @enderror
             </div>
 
             <div class="form-group">
-                <input type="text" id="address" name="address" value="{{ old('address') }}" placeholder="Address" required>
-                @error('address')
+                <label for="stock-quantity">Stock Quantity</label>
+                <input type="number" id="stock-quantity" name="stock_quantity" value="{{ old('stock_quantity') }}" required min="0" step="1">
+                @error('stock_quantity')
                     <p class="error-message">{{ $message }}</p>
                 @enderror
             </div>
 
             <div class="form-group">
-                <input type="text" id="city" name="city" value="{{ old('city') }}" placeholder="City" required>
-                @error('city')
+                <label for="category">Category</label>
+                <select id="category" name="category_id" required>
+                    <option value="">Select a category</option>
+                    <option value="6" {{ old('category') == 'Accessories' ? 'selected' : '' }}>Accessories</option>
+                    <option value="4" {{ old('category') == 'Phones' ? 'selected' : '' }}>Phones</option>
+                    <option value="1" {{ old('category') == 'Laptops' ? 'selected' : '' }}>Laptops</option>
+                    <option value="3" {{ old('category') == 'Tablets' ? 'selected' : '' }}>Tablets</option>
+                    <option value="2" {{ old('category') == 'Smartwatches' ? 'selected' : '' }}>Smartwatches</option>
+                </select>
+                @error('category_id')
                     <p class="error-message">{{ $message }}</p>
                 @enderror
             </div>
+
 
             <div class="form-group">
-                <input type="text" id="zip" name="zip" value="{{ old('zip') }}" placeholder="Zip Code" required>
-                @error('zip')
+                <label for="image-id">Image id</label>
+                <input type="number" id="image-id" name="img_id" value="{{ old('stock_quantity') }}" required>
+                @error('img_id')
                     <p class="error-message">{{ $message }}</p>
                 @enderror
             </div>
 
-            <div class="form-group">
-                <input type="text" id="cardName" name="cardName" value="{{ old('cardName') }}" placeholder="Name on Card" required>
-                @error('cardName')
-                    <p class="error-message">{{ $message }}</p>
-                @enderror
-            </div>
 
-            <div class="form-group">
-                <input type="text" id="cardNumber" name="cardNumber" value="{{ old('cardNumber') }}" placeholder="Card Number" required>
-                @error('cardNumber')
-                    <p class="error-message">{{ $message }}</p>
-                @enderror
-            </div>
 
-            <div class="form-group">
-                <input type="month" id="expiryDate" name="expiryDate" value="{{ old('expiryDate') }}" placeholder="yyyy-mm" required>
-                @error('expiryDate')
-                    <p class="error-message">{{ $message }}</p>
-                @enderror
-            </div>
 
-            <div class="form-group">
-                <input type="text" id="cvv" name="cvv" value="{{ old('cvv') }}" placeholder="CVV" required>
-                @error('cvv')
-                    <p class="error-message">{{ $message }}</p>
-                @enderror
-            </div>
 
-            <button type="submit" class="checkout-button">Place Order</button>
+            <div class="form-buttons">
+                <button type="submit">Add</button>
+
+            </div>
         </form>
     </div>
-
     
 </body>
 </html>

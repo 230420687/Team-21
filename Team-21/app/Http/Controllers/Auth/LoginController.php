@@ -49,7 +49,7 @@ class LoginController extends Controller
                 Session::put('user_type', 'admin');
                 Session::put('email', $admin->email);
 
-                return redirect('/home')->with('success', 'Logged in successfully');
+                return redirect('/adminproducts')->with('success', 'Logged in successfully');
             }
         }
 

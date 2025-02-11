@@ -159,6 +159,34 @@
         </div>
     </div>
 
+    <!-- Forgot Password Pop-up -->
+    <div id="forgot-password-popup" class="auth-popup">
+        <div class="auth-popup-content">
+            <span class="close-btn">&times;</span>
+            <div class="login-box">
+                <h2 class="login-title">Forgot Password</h2>
+                <form action="{{route('forgot.password.reset')}}" method="POST">
+                    @csrf
+                    <div class="input-container">
+                        <img src="mail.svg" class="icon" alt="Email Icon">
+                        <label for="email">Email:</label>
+                        <input type="text" id="email" name="email" required>
+                    </div>
+                    <div class="input-container">
+                        <label for="new_password">New Password</label>
+                        <input type="password" id="new_password" name="new_password" required>
+                    </div>
+                    <div class="input-container">
+                        <label for="new_password_confirmation">Confirm New Password</label>
+                        <input type="password" id="new_password_confirmation" name="new_password_confirmation" required>
+                    </div>
+                    <a href="#" class="back-to-login" id="back-to-login-forgot">Back to Log In</a>
+                    <button type="submit" class="login-submit" id="reset-password-btn">Reset Password</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
         
   
 

@@ -3,11 +3,14 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\BasketController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\WishListController;
+
 
 Route::get('/', function(){
     return redirect('/nav');
@@ -118,6 +121,20 @@ Route::post('products', [ProductController::class, 'index']
 
 
 
+
+Route::get('/adminproducts', function(){
+    $products = DB::table('products')->get();
+    return view('adminViewOfProduct',['products' => $products]);
+});
+
+Route::post('adminproducts', [ProductController::class, 'adminIndex'])->name('adminproducts.index');
+
+// Remove Product from Basket
+Route::delete('/adminproducts/{item}', [ProductController::class, 'remove'])->name('admin.remove');
+
+
+
+
 // Route for Laptops
 Route::get('/Laptops', function(){
     $products = DB::table('products')->get();
@@ -173,4 +190,37 @@ Route::post('/productssort',function() {
 });
 #Route::get('/Laptops', [ProductController::class, 'showlap']);
 Route::get('/productdesc/{product_id}', [ProductController::class, 'show'] );
+
+
+
+Route::post('/reset-password', [ForgotPasswordController::class, 'resetPassword'])->name('forgot.password.reset');
+
+
+
+// Basket Page
+Route::get('/wishlist', [WishListController::class, 'index'])->name('wishlist.index');
+
+// Add Product to wish
+Route::post('/wishlist/add', [WishListController::class, 'add'])->name('wishlist.add');
+
+// Update Product Quantity in wish
+Route::put('/wishlist/{item}', [WishListController::class, 'update'])->name('wishlist.update');
+
+// Remove Product from wish
+Route::delete('/wishlist/{item}', [WishListController::class, 'remove'])->name('wishlist.remove');
+
+// Clear wish
+Route::delete('/wishlist/clear', [WishListController::class, 'clear'])->name('wishlist.clear');
+
+
+Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
+Route::post('/products/store', [ProductController::class, 'store'])->name('products.store');
+
+
+
+
+Route::get('/products/{product}/update', [ProductController::class, 'update'])->name('products.update');
+Route::post('/products/{product}/updateStock', [ProductController::class, 'updateStock'])->name('products.updateStock');
+
+
 

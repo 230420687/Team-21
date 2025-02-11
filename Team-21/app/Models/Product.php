@@ -12,6 +12,7 @@ class Product extends Model
 
     protected $table = 'products';
     protected $primaryKey = 'product_id';
+    public $timestamps = false;
 
 
 
@@ -21,6 +22,9 @@ class Product extends Model
         'product_price',
         'stock_quantity',
         'img_id',
+        'category_id',
+        'updated_at',
+        'created_at',
     ];
 
 

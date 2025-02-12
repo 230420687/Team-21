@@ -1,155 +1,153 @@
-:root {
-    --primary-color: #4CAF50;
-    --secondary-color: #D9D9D9;
-    --font-family: 'Dela Gothic One', sans-serif;
-}
-
+/* Base styles */
 body {
-    font-family: Arial, sans-serif;
-    background-color: white;
+  background-color: #ffffff;
+  margin: 0;
+  padding: 0;
+  font-family: 'inter', sans-serif;
 }
 
-header {
-    background-color: transparent;
-    padding: 20px;
-    position: relative;
+/* Header */
+#main-header {
+  padding: 1rem 2rem;
+  background: #fff;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  animation: fadeIn 0.5s ease-in-out;
 }
 
-.header-content {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: transparent;
+/* Logo and Title */
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
-.logo-container {
-    display: flex;
-    align-items: center;
-    background-color: transparent;
+.logo {
+  width: 98px;
+  height: 48px;
+  margin-right: 13px;
+  transition: transform 0.3s ease;
 }
 
-.logo-container img {
-    width: 100px; /* Adjust size as needed */
-    height: auto;
-    margin-right: 20px; /* Space between the image and text */
+.logo:hover {
+  transform: scale(1.05);
 }
 
-.logo-text h1, .logo-text p {
-    margin: 0;
-    font-family: var(--font-family);
+.navbar-title {
+  font-size: 24px;
+  color: #2d4059;
+  margin: 0;
+  font-family: 'dela gothic one', sans-serif;
+  animation: slideIn 0.5s ease-out;
 }
 
-.search-bar {
-    width: 521px;
-    height: 26px;
-    flex-shrink: 0;
-    border-radius: 10px;
-    opacity: 0.75;
-    background: var(--secondary-color);
-    border: none;
-    padding: 5px 10px;
-    color: #9a9a9a;
+.navbar-subtitle {
+  font-size: 10px;
+  color: #2d4059;
+  margin: 0;
+  font-family: 'dela gothic one', sans-serif;
+  animation: fadeInUp 0.5s ease-out forwards;
+  animation-delay: 0.3s;
 }
 
-.search-bar::placeholder {
-    color: #a0a0a0;
+/* Search */
+.search-container {
+  flex: 1;
+  max-width: 600px;
+  margin: 0 2rem;
+  position: relative;
 }
 
-.search-button{
-    flex-shrink: 0;
-    border-radius: 10px;
-    opacity: 0.75;
-    background: var(--secondary-color);
-    border: none;
-    padding: 5px 10px;
-    color: #9a9a9a;
-
+.search-input {
+  width: 100%;
+  padding: 12px 20px;
+  background-color: rgba(227, 227, 227, 0.532);
+  border: 2px solid transparent;
+  border-radius: 25px;
+  outline: none;
+  font-size: 14px;
+  transition: all 0.3s ease;
 }
 
+.search-button {
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 8px 20px;
+  background-color: #2d4059;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Navigation */
 .nav-bar {
-    width: 1280px;
-    height: 41px;
-    flex-shrink: 0;
-    background: transparent;
-    margin: 20px auto 0 auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0 20px;
+  width: 100%;
+  max-width: 1280px;
+  height: 41px;
+  margin: 20px auto 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
 }
 
 .nav-bar ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    gap: 20px;
-}
-
-.nav-bar li {
-    display: inline;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 30px;
 }
 
 .nav-bar a {
-    text-decoration: none;
-    color: #000;
+  text-decoration: none;
+  color: #2d4059;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  position: relative;
 }
 
-.nav-bar a:hover {
-    color: var(--primary-color); /* Change color on hover */
+/* Categories Nav */
+.topnav {
+  background-color: #2d4059;
+  width: 100%;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 20px;
 }
 
-
-
-/* General error alert above the form */
-.alert-danger {
-    background-color: #f8d7da;
-    color: #721c24;
-    border: 1px solid #f5c6cb;
-    border-radius: 5px;
-    padding: 10px;
-    margin-bottom: 15px;
-    font-size: 14px;
+.topnav a {
+  color: #ffffff;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: all 0.3s ease;
 }
 
-/* Specific field error messages */
-.text-danger {
-    color: #dc3545; 
-    font-size: 12px;
-    margin-top: 5px;
-    display: block; 
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-/* Adjust the input container to handle errors */
-.input-container {
-    margin-bottom: 20px; 
+@keyframes slideIn {
+  from { transform: translateX(-20px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
 }
 
-.input-container input, 
-.input-container select {
-    border: 1px solid #ccc; 
-    border-radius: 4px;
-    padding: 10px;
-    width: 100%;
-    box-sizing: border-box;
-    font-size: 14px;
+@keyframes fadeInUp {
+  from { transform: translateY(10px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
 }
-
-/* Highlight input fields with errors */
-.input-container input:focus,
-.input-container select:focus {
-    border-color: #80bdff; 
-    outline: none;
-}
-
-/* Red border */
-.input-container input.is-invalid, 
-.input-container select.is-invalid {
-    border-color: #dc3545; 
-}
-
-.input-container input.is-invalid:focus,
-.input-container select.is-invalid:focus {
-    border-color: #dc3545; 
-}
-

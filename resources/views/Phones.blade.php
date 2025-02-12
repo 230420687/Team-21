@@ -15,7 +15,7 @@
   <!-- logo -->
   <header id="main-header">
     <a href="{{url('/home')}}">
-      <img src="Images/logo.png" alt="Gadget Grads Logo" class="logo" width="98" height="48">
+      <img src="{{ asset('images/logo.png') }}" alt="Gadget Grads Logo" class="logo" width="98" height="48">
     </a>
     <h1>GADGET GRADS</h1>
     <h2>Graduate with better tech!</h2>
@@ -23,7 +23,7 @@
     <!-- icons -->
     <div class="icons">
       <a href="{{url('/nav')}}" class="user-icon" title="Sign in">
-        <img src="images/user-1.svg" height="30" alt="User icon">
+        <img src="{{ asset('images/user-1.svg') }}" height="30" alt="User icon">
       </a>
       <a href="{{url('/wishlist')}}" class="wishlist-icon" title="Wishlist">
         <img src="images/heart.svg" height="30" alt="Wishlist icon">

@@ -8,6 +8,7 @@ use App\Http\Controllers\BasketController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProductController;
+use Illuminate\Support\Facades\DB;
 
 Route::get('/', function(){
     return redirect('/nav');
@@ -74,7 +75,9 @@ Route::post('/checkout', [CheckoutController::class, 'verifyCheckout'])->name('c
 Route::get('/contact', [ContactController::class, 'show'])->name('contact.show');
 Route::post('/contact', [ContactController::class, 'submit'])->name('contact.submit');
 
-
+Route::get('/navbar', function() {
+    return view('navbar');
+})->name('navbar');
 
 
 

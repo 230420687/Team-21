@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 use App\Models\model_name; 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use App\Models\BasketItem;
+use App\Models\Product;
+use App\Models\Order;
+use App\Models\OrderItem;
+use App\Models\Shipping;
 
 class CheckoutController extends Controller
 {
@@ -18,6 +23,7 @@ class CheckoutController extends Controller
     //validating the field display any errors
     public function verifyCheckout(Request $request)
     {
+        //validate inputs
         $request->validate([
             'fullName' => 'required|string|max:255',
             'email' => 'required|email|max:255',
@@ -30,11 +36,31 @@ class CheckoutController extends Controller
             'expiryDate' => 'required|date_format:Y-m',
             'cvv' => 'required|digits:3',
         ]);
+        //calculate the number of items in the basket
+        $items = BasketItem::where('user_id', Auth::id())->with('product')->get();
+        $itemstotal = 0;
 
-        DB::table('basket_items')->where('user_id','=',Auth::id())->delete();
+        foreach ($items as $item){
+            $itemstotal += $item->quantity;
+        }
 
-        
 
+
+        //add inputs to order table
+
+        $userId = Auth::id();
+        //create an order for the orders table
+        $order = Order::create(['user_id' => $userId,'order_date'=> now()->format('Y-m-d H:i'), 'order_status'=> 'PENDING', 'total_amount'=>$itemstotal]);
+        //create a shippingentry for the shipping table
+        $shippingentry = Shipping::create(['order_id'=>$order->order_id,'shipping_address'=>($request->input('address').' '.$request->input('city').' '.$request->input('zip')),'shipping_status'=>'PENDING','shipping_date'=>now()->format('Y-m-d H:i')]);
+
+        //create an orderitem for the orderitems table
+        foreach ($items as $item){
+            $productprice = Product::where('product_id', $item->product_id)->value('product_price');
+            OrderItem::create(['order_id'=>$order->order_id, 'product_id'=>$item->product_id, 'quantity'=>$item->quantity, 'unit_price'=>$productprice]);
+        }
+        //if(payment){insert data in payments table
+        //}
         return redirect()->route('checkout.show')->with('success', 'Payment processed successfully!');
     }
 }

@@ -86,7 +86,15 @@ public function store(Request $request)
     $validated['created_at'] = now(); // or use your desired date, e.g., '2025-02-01'
     $validated['updated_at'] = now(); // use current timestamp
 
-    Product::create($validated);
+   
+    Product::create([
+        'product_name' => $validated['product_name'],
+        'product_price' => $validated['product_price'],
+        'stock_quantity' => $validated['stock_quantity'],
+        'product_description' => $validated['product_description'],
+        'img_id' => $validated['img_id'],
+        'category_id'=> $validated['category_id'],
+    ]);
 
     return redirect()->route('adminproducts.index')->with('success', 'Product added successfully!');
 }

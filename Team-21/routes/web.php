@@ -10,6 +10,7 @@ use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\WishListController;
+use App\Http\Controllers\ReviewController;
 
 
 Route::get('/', function(){
@@ -222,5 +223,7 @@ Route::post('/products/store', [ProductController::class, 'store'])->name('produ
 Route::get('/products/{product}/update', [ProductController::class, 'update'])->name('products.update');
 Route::post('/products/{product}/updateStock', [ProductController::class, 'updateStock'])->name('products.updateStock');
 
-
+//review page routes 
+Route::post('/products/{product}/reviews', [ReviewController::class, 'store'])->name('reviews.store');
+Route::get('/products/{product}/reviews', [ReviewController::class, 'show']);
 

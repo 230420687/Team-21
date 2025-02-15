@@ -27,6 +27,13 @@ class Product extends Model
         'created_at',
     ];
 
+    public function reviews(){
+        return $this->hasMany(Review::class, 'product_id', 'product_id');
+
+    }
+
+    
+
 
     
 }

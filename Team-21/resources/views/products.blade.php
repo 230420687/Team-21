@@ -86,6 +86,7 @@
     <h3 class="product-title"> {{$product->product_name}}</h3>  
     <p class ="product-price">{{$product->product_price}}</p>
     <div class="product-buttons">
+  
       <!-- view button -->
   <button class="view-button" type = "submit" id="viewprod" onclick="window.location='{{url('productdesc',$product->product_id)}}'">View Product</button>
   

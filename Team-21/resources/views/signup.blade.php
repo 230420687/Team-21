@@ -187,6 +187,12 @@
         </div>
     </div>
 
+    @auth
+        <p>
+            <a href="{{ route('customer.edit') }}" class="btn btn-primary">Update Your Details</a>
+        </p>
+    @endauth
+
         
   
 

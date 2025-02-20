@@ -11,6 +11,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\WishListController;
 use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\CustomerDetailsController;
 
 
 Route::get('/', function(){
@@ -226,4 +227,13 @@ Route::post('/products/{product}/updateStock', [ProductController::class, 'updat
 //review page routes 
 Route::post('/products/{product}/reviews', [ReviewController::class, 'store'])->name('reviews.store');
 Route::get('/products/{product}/reviews', [ReviewController::class, 'show']);
+
+//Display the form for details to be updated
+Route::get('edit', [CustomerDetailsController::class, 'edit'])->name('customer.edit');
+
+//The actual updating of the form
+Route::post('update', [CustomerDetailsController::class, 'update'])->name('customer.update');
+
+//Deletes the customer's data from the database
+Route::post('delete', [CustomerDetailsController::class, 'delete'])->name('delete');
 

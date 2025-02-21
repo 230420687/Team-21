@@ -12,6 +12,8 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\WishListController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\CustomerDetailsController;
+use App\Http\Controllers\SalesReportController;
+
 
 
 Route::get('/', function(){
@@ -237,3 +239,5 @@ Route::post('update', [CustomerDetailsController::class, 'update'])->name('custo
 //Deletes the customer's data from the database
 Route::post('delete', [CustomerDetailsController::class, 'delete'])->name('delete');
 
+//Displays the sale report to the admin
+Route::get('/sales-report', [SalesReportController::class, 'report']);

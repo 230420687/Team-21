@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gadget Grads - Login/Sign Up</title>
+    <link rel="stylesheet" href="NavBar.css">
+    <link rel="stylesheet" href="LoginPopUp.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo-container">
+                <img src="GG_higher-resolution.png" alt="Gadget Grads Logo">
+                <div class="logo-text">
+                    <h1>Gadget Grads</h1>
+                    <p>Graduate with better tech!</p>
+                </div>
+            </div>
+            <input type="text" class="search-bar" placeholder="Search products and brands" aria-label="Search">
+            <button id="login-btn" class="login-btn">Log In</button>
+        </div>
+        <nav class="nav-bar">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+    </main>
+
+    <!-- Login Pop-up -->
+    <div id="auth-popup" class="auth-popup">
+        <div class="auth-popup-content">
+            <span class="close-btn">&times;</span>
+            <div class="login-box">
+                <h2 class="login-title">Login</h2>
+                <p class="signup-text">New to Gadget Grads? <a href="#" id="signup-link" class="signup-link">Sign up here!</a></p>
+                <div class="input-container">
+                    <img src="mail.svg" class="icon" alt="Email Icon">
+                    <label for="username">Email:</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="input-container">
+                    <img src="lock-on.svg" class="icon" alt="Password Icon">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+                    <img src="eye-open.svg" class="eye-icon" alt="Show Password">
+                </div>
+                <div class="input-container remember-me">
+                    <input type="checkbox" id="remember-me" name="remember-me">
+                    <label for="remember-me">Remember me</label>
+                </div>
+                <a href="#" class="forgot-password" id="forgot-password-link">Forgot Password?</a>
+                <button type="submit" class="login-submit">Login</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sign Up Pop-up -->
+    <div id="signup-popup" class="auth-popup">
+        <div class="auth-popup-content">
+            <span class="close-btn">&times;</span>
+            <div class="login-box">
+                <h2 class="login-title">Sign Up</h2>
+                <div class="input-container">
+                    <img src="mail.svg" class="icon" alt="Email Icon">
+                    <label for="new-email">Email:</label>
+                    <input type="text" id="new-email" name="new-email" required>
+                </div>
+                <div class="input-container">
+                    <img src="lock-on.svg" class="icon" alt="Password Icon">
+                    <label for="new-password">Password:</label>
+                    <input type="password" id="new-password" name="new-password" required>
+                    <img src="eye-open.svg" class="eye-icon" alt="Show Password">
+                </div>
+                <div class="input-container">
+                    <img src="lock-on.svg" class="icon" alt="Password Icon">
+                    <label for="confirm-password">Confirm Password:</label>
+                    <input type="password" id="confirm-password" name="confirm-password" required>
+                    <img src="eye-open.svg" class="eye-icon" alt="Show Password">
+                </div>
+                <a href="#" class="back-to-login" id="back-to-login-signup">Back to Log In</a>
+                <button type="submit" class="login-submit">Sign Up</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Forgot Password Pop-up -->
+    <div id="forgot-password-popup" class="auth-popup">
+        <div class="auth-popup-content">
+            <span class="close-btn">&times;</span>
+            <div class="login-box">
+                <h2 class="login-title">Forgot Password</h2>
+                <div class="input-container">
+                    <img src="mail.svg" class="icon" alt="Email Icon">
+                    <label for="forgot-email">Email:</label>
+                    <input type="text" id="forgot-email" name="forgot-email" required>
+                </div>
+                <a href="#" class="back-to-login" id="back-to-login-forgot">Back to Log In</a>
+                <button type="submit" class="login-submit">Send Reset Link</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="JavaScript_pop-up.js"></script>
+</body>
+</html>
+<?php /**PATH C:\Users\dilax\Team-21\Team-21\resources\views/NavBar.blade.php ENDPATH**/ ?>

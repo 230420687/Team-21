@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gadget Grads - Login/Sign Up</title>
+
+    <!-- Use Laravel's asset helper for CSS -->
+    <link rel="stylesheet" href="<?php echo e(asset('css/NavBar.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('css/LoginPopUp.css')); ?>">
+    <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo-container">
+                <!-- Use Laravel's asset helper for images -->
+                <img src="<?php echo e(asset('images/GG_higher-resolution.png')); ?>" alt="Gadget Grads Logo">
+                <div class="logo-text">
+                    <h1>Gadget Grads</h1>
+                    <p>Graduate with better tech!</p>
+                </div>
+            </div>
+            <input type="text" class="search-bar" placeholder="Search products and brands" aria-label="Search">
+            <button id="login-btn" class="login-btn">Log In</button>
+        </div>
+        <nav class="nav-bar">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+    </main>
+
+    <!-- Login Pop-up -->
+    <div id="auth-popup" class="auth-popup">
+        <div class="auth-popup-content">
+            <span class="close-btn">&times;</span>
+            <div class="login-box">
+                <h2 class="login-title">Login</h2>
+                <p class="signup-text">New to Gadget Grads? <a href="#" id="signup-link" class="signup-link">Sign up here!</a></p>
+                <form action="<?php echo e(route('login.post')); ?>" method="POST">
+                    <?php echo csrf_field(); ?>
+                    <div class="input-container">
+                        <img src="<?php echo e(asset('images/mail.svg')); ?>" class="icon" alt="Email Icon">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="input-container">
+                        <img src="<?php echo e(asset('images/lock-on.svg')); ?>" class="icon" alt="Password Icon">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password" required>
+                        <img src="<?php echo e(asset('images/eye-open.svg')); ?>" class="eye-icon" alt="Show Password">
+                    </div>
+                    <div class="input-container">
+                        <label for="user_type">User Type:</label>
+                        <select id="user_type" name="user_type" required>
+                            <option value="customer">Customer</option>
+                            <option value="admin">Admin</option>
+                        </select>
+                    </div>
+                    <div class="input-container remember-me">
+                        <input type="checkbox" id="remember-me" name="remember-me">
+                        <label for="remember-me">Remember me</label>
+                    </div>
+                    <a href="#" class="forgot-password" id="forgot-password-link">Forgot Password?</a>
+                    <button type="submit" class="login-submit">Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sign Up Pop-up -->
+    <div id="signup-popup" class="auth-popup">
+        <div class="auth-popup-content">
+            <span class="close-btn">&times;</span>
+            <div class="login-box">
+                <h2 class="login-title">Sign Up</h2>
+                <form action="<?php echo e(route('register.post')); ?>" method="POST">
+                    <?php echo csrf_field(); ?>
+                    <div class="input-container">
+                        <img src="<?php echo e(asset('images/user.svg')); ?>" class="icon" alt="Username Icon">
+                        <label for="name">Username:</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="input-container">
+                        <img src="<?php echo e(asset('images/mail.svg')); ?>" class="icon" alt="Email Icon">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="input-container">
+                        <img src="<?php echo e(asset('images/lock-on.svg')); ?>" class="icon" alt="Password Icon">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password" required>
+                        <img src="<?php echo e(asset('images/eye-open.svg')); ?>" class="eye-icon" alt="Show Password">
+                    </div>
+                    <button type="submit" class="login-submit">Sign Up</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Use Laravel's asset helper for JavaScript -->
+    <script src="<?php echo e(asset('js/JavaScript_pop-up.js')); ?>"></script>
+</body>
+</html><?php /**PATH C:\Users\dilax\Team-21\Team-21\resources\views/ImprovedBar.blade.php ENDPATH**/ ?>

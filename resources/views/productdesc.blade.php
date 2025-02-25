@@ -25,9 +25,9 @@
 
  <!-- icons -->
       <div class="icons">
-          <a href="{{url('/nav')}}" class="user-icon" title="Sign in"><img src="images\user.svg" height="30"></a>
-          <a href="wishlist.html" class="wishlist-icon" title="Wishlist"><img src="images\heart.svg" height="30"></a>
-          <a href="{{url('/basket')}}" class="cart-icon" title="Basket"><img src=" images\basket.svg" height="30"></a>
+          <a href="{{url('/nav')}}" class="user-icon" title="Sign in"><img src="{{ asset('images/user.svg')}}" height="30"></a>
+          <a href="wishlist.html" class="wishlist-icon" title="Wishlist"><img src="{{ asset('images/heart.svg')}}" height="30"></a>
+          <a href="{{url('/basket')}}" class="cart-icon" title="Basket"><img src="{{ asset('images/basket.svg')}}" height="30"></a>
       </div>
   </header>
   <!-- nav bar -->

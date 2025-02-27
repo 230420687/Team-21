@@ -13,6 +13,7 @@ use App\Http\Controllers\WishListController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\CustomerDetailsController;
 use App\Http\Controllers\SalesReportController;
+use App\Http\Controllers\OrderController;
 
 
 
@@ -241,3 +242,20 @@ Route::post('delete', [CustomerDetailsController::class, 'delete'])->name('delet
 
 //Displays the sale report to the admin
 Route::get('/sales-report', [SalesReportController::class, 'report']);
+
+
+//Displays the orders 
+Route::get('/adminorders', [OrderController::class, 'adminIndex'])->name('orders.adminIndex');
+
+Route::get('/order',[OrderController::class, 'index'])
+    ->middleware('auth')
+    ->name('orders.index');
+
+Route::get('/orders/{order_id}',[OrderController::class, 'show'])->name('orders.show');
+
+Route::get('/adminorders/{order_id}',[OrderController::class, 'adminShow'])->name('orders.adminShow');
+
+Route::get('/adminorders/{order}/editstatus', [OrderController::class, 'editStatus'])->name('orders.adminEditStatus');
+
+Route::post('/adminorders/{order}/updatestatus', [OrderController::class, 'updateStatus'])->name('orders.adminUpdateStatus');
+

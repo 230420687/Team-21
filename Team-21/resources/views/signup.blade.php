@@ -193,6 +193,13 @@
         </p>
     @endauth
 
+    @auth
+        <p>
+            <a href="{{ route('orders.index') }}" class="btn btn-primary">My Orders</a>
+        </p>
+    
+    @endauth
+
         
   
 

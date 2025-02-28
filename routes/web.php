@@ -53,6 +53,14 @@ Route::get('/basket', function(){
     return view('basket');
 });
 
+Route::post('/profile', [ProfileController::class, 'show'])->name('profile');
+
+
+//{
+//$orders = DB::table('orders')->get();
+//    $orders = Order::where('user_id', Auth::id())->get();
+//    return view('profile',['orders' => $orders]);
+//})->name('profile');
 
 //return about view
 Route::get('/about',  function(){

@@ -153,6 +153,17 @@
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
+                    <div class="input-container">
+                        <img src="{{ asset('images/lock-on.svg') }}" class="icon" alt="user_status Icon">
+                        <label for="user_status">User Type:</label>
+                        <select type="user_status" id="user_status" name="user_status" required>
+                            <option value="admin">admin</option>
+                            <option value="user">user</option>
+                        @error('user_status')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                    </select>
+                    </div>
                     <button type="submit" class="login-submit">Sign Up</button>
                 </form>
             </div>

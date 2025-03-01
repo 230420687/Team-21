@@ -259,3 +259,5 @@ Route::get('/adminorders/{order}/editstatus', [OrderController::class, 'editStat
 
 Route::post('/adminorders/{order}/updatestatus', [OrderController::class, 'updateStatus'])->name('orders.adminUpdateStatus');
 
+Route::post('/orders/{item}/return', [OrderController::class, 'returnItem'])->name('orders.returnItem');
+

@@ -42,6 +42,7 @@
                 <td>{{ $item->quantity }}</td>
                 <td>${{ number_format($item->product->product_price, 2) }}</td>
                 <td>${{ number_format($item->quantity * $item->product->product_price, 2) }}</td>
+
             </tr>
             @endforeach
         </tbody>

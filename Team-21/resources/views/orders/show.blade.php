@@ -42,6 +42,14 @@
                 <td>{{ $item->quantity }}</td>
                 <td>${{ number_format($item->product->product_price, 2) }}</td>
                 <td>${{ number_format($item->quantity * $item->product->product_price, 2) }}</td>
+                <td>
+                    @if($order->order_status === 'delivered')
+                        <form action="{{ route('orders.returnItem', ['item' => $item->order_item_id]) }}" method="POST">
+                            @csrf
+                            <button type="submit" class="btn btn-danger">Return Item</button>
+                        </form>
+                    @endif
+                </td>
             </tr>
             @endforeach
         </tbody>

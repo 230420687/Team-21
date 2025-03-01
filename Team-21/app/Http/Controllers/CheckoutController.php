@@ -58,7 +58,13 @@ class CheckoutController extends Controller
         foreach ($items as $item){
             $productprice = Product::where('product_id', $item->product_id)->value('product_price');
             OrderItem::create(['order_id'=>$order->order_id, 'product_id'=>$item->product_id, 'quantity'=>$item->quantity, 'unit_price'=>$productprice]);
+            $product = Product::find($item->product_id);
+            if ($product) {
+                $product->decrement('stock_quantity', $item->quantity);
+            }
         }
+
+        BasketItem::where('user_id', Auth::id())->delete();
         //if(payment){insert data in payments table
         //}
         return redirect()->route('checkout.show')->with('success', 'Payment processed successfully!');

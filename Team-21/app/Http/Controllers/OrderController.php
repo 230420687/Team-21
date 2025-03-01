@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Order;
+use App\Models\OrderItem;
+use Illuminate\Support\Facades\Log;
 
 class OrderController extends Controller
 {
@@ -52,7 +54,51 @@ class OrderController extends Controller
         $order->update(['order_status' => $request->order_status]);
     
         return redirect()->route('orders.adminIndex');
+
+
+
     }
-    
+
+
+
+public function returnItem($itemId)
+{
+
+
+    // Load the order item with product data
+    $item = OrderItem::with('product', 'order')->find($itemId);
+
+    if (!$item) {
+
+        return redirect()->back()->with('error', 'Item not found.');
+    }
+
+
+
+    // Ensure the order is delivered before allowing return
+    if ($item->order->order_status !== 'delivered') {
+
+        return redirect()->back()->with('error', 'You can only return items from delivered orders.');
+    }
+
+    // Restore stock quantity for the product
+    if ($item->product) {
+
+        $item->product->increment('stock_quantity', $item->quantity);
+    }
+
+    // Delete the item from the order
+
+    $item->delete();
+
+    // Check if the order is now empty and update status
+    if ($item->order->orderItems()->count() == 0) {
+
+        $item->order->update(['order_status' => 'canceled']);
+    }
+
+    return redirect()->back()->with('success', 'Item returned successfully. Stock updated.');
+}
+
 
 }

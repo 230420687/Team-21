@@ -88,6 +88,12 @@
     <h3 class="product-title"> {{$product->product_name}}</h3>  
     <p class ="product-price">{{$product->product_price}}</p>
     <p class ="product-stock">Stock Quantity: {{$product->stock_quantity}}</p>
+     <!-- Low stock alert message -->
+    @if($product->stock_quantity <= 5 && $product->stock_quantity > 0)
+      <p class="text-warning">Make an order to the supplier for this product. Only {{$product->stock_quantity}} left in stock.</p>
+    @elseif($product->stock_quantity == 0)
+      <p class="text-danger">Out of stock</p>
+    @endif
     <div class="product-buttons">
       <!-- view button -->
   <button class="view-button" type = "submit" id="viewprod" onclick="window.location='{{url('productdesc',$product->product_id)}}'">View Product</button>

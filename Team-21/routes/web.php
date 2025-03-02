@@ -14,7 +14,7 @@ use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\CustomerDetailsController;
 use App\Http\Controllers\SalesReportController;
 use App\Http\Controllers\OrderController;
-
+use App\Http\Controllers\SupplierOrderController;
 
 
 Route::get('/', function(){
@@ -261,3 +261,23 @@ Route::post('/adminorders/{order}/updatestatus', [OrderController::class, 'updat
 
 Route::post('/orders/{item}/return', [OrderController::class, 'returnItem'])->name('orders.returnItem');
 
+// Display the form to create a new supplier order
+Route::get('/supplier-orders/create', [SupplierOrderController::class, 'create'])->name('supplierorders.create');
+
+// Store a new supplier order
+Route::post('/supplier-orders', [SupplierOrderController::class, 'store'])->name('supplier-orders.store');
+
+// List all supplier orders
+Route::get('/supplier-orders', [SupplierOrderController::class, 'index'])->name('supplier-orders.index');
+
+// Show a specific supplier order
+Route::get('/supplier-orders/{supplierOrder}', [SupplierOrderController::class, 'show'])->name('supplier-orders.show');
+
+// Display the form to edit a supplier order
+Route::get('/supplier-orders/{supplierOrder}/edit', [SupplierOrderController::class, 'edit'])->name('supplier-orders.edit');
+
+// Update a supplier order
+Route::put('/supplier-orders/{supplierOrder}', [SupplierOrderController::class, 'update'])->name('supplier-orders.update');
+
+// Delete a supplier order
+Route::delete('/supplier-orders/{supplierOrder}', [SupplierOrderController::class, 'destroy'])->name('supplier-orders.destroy');

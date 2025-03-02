@@ -108,10 +108,15 @@ public function updateStock(Request $request, Product $product)
         'stock_quantity' => 'required|integer|min:0',
     ]);
 
-    $product->update(['stock_quantity' => $validated['stock_quantity']]);
+    $product->update([
+        'stock_quantity' => $validated['stock_quantity'],
+        'product_price' => $validated['product_price']
+    ]);
 
     return redirect()->route('adminproducts.index')->with('success', 'Stock updated successfully!');
 }
+
+
 
 
     

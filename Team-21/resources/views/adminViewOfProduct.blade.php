@@ -86,7 +86,7 @@
    <img src= "Images\{{$product->img_id}}.jpg" alt="Product" class="iPadAir">
    <div class ="product-info">
     <h3 class="product-title"> {{$product->product_name}}</h3>  
-    <p class ="product-price">{{$product->product_price}}</p>
+    <p class ="product-price">£{{$product->product_price}}</p>
     <p class ="product-stock">Stock Quantity: {{$product->stock_quantity}}</p>
      <!-- Low stock alert message -->
     @if($product->stock_quantity <= 5 && $product->stock_quantity > 0)

@@ -19,7 +19,7 @@ class RegistrationController extends Controller
                 'name' => 'required|string',
                 'email' => 'required|string|email',
                 'password' => 'required|string|min:8',
-                'user_status' => 'required|in:admin,user'
+                'user_status' => 'user'
             ]);
         
  
@@ -29,7 +29,7 @@ class RegistrationController extends Controller
                     'name' => $validInput['name'],
                     'email' => $validInput['email'],
                     'password' => $validInput['password'],
-                    'user_status' => $validInput['user_status'],  
+                    'user_status' => 'user', 
                 ]);
                 
                

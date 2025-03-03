@@ -26,7 +26,6 @@ body {
 }
 
 /* Product Grid Layout */
-/* Product Grid Layout */
 .product-section {
   display: inline-block;
   width: calc(30% - 20px); /* Changed from 33.33% to 30% */

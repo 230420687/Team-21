@@ -241,17 +241,20 @@ Route::get('/sales-report', [SalesReportController::class, 'report']);
 //Displays the orders 
 Route::get('/adminorders', [OrderController::class, 'adminIndex'])->name('orders.adminIndex');
 
-Route::get('/order', [OrderController::class, 'index'])
-  ->middleware('auth')
-  ->name('orders.index');
+Route::get('/order',[OrderController::class, 'index'])
+    ->middleware('auth')
+    ->name('orders.index');
 
-Route::get('/orders/{order_id}', [OrderController::class, 'show'])->name('orders.show');
+Route::get('/orders/{order_id}',[OrderController::class, 'show'])->name('orders.show');
 
-Route::get('/adminorders/{order_id}', [OrderController::class, 'adminShow'])->name('orders.adminShow');
+Route::get('/adminorders/{order_id}',[OrderController::class, 'adminShow'])->name('orders.adminShow');
 
 Route::get('/adminorders/{order}/editstatus', [OrderController::class, 'editStatus'])->name('orders.adminEditStatus');
 
 Route::post('/adminorders/{order}/updatestatus', [OrderController::class, 'updateStatus'])->name('orders.adminUpdateStatus');
+
+Route::post('/orders/{item}/return', [OrderController::class, 'returnItem'])->name('orders.returnItem');
+
 
 Route::get('/navbarpreview', function () {
   return view('components.navbar');

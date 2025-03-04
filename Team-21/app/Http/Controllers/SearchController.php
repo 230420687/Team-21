@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Order;
 use Illuminate\Http\Request;
 
 class SearchController extends Controller
@@ -22,4 +23,23 @@ class SearchController extends Controller
         return view('search.results', compact('products', 'query'));
         
     }
+
+    public function searchOrders(Request $request)
+    {
+        
+        $request->validate([
+            'query' => 'required|string'
+        ]);
+        
+        $query = $request->input('query');
+
+        // Search by order_id (exact match) or order_status (partial match)
+        $orders = Order::where('order_id', $query)
+                       ->orWhere('order_status', 'LIKE', "%{$query}%")
+                       ->get();
+
+        return view('adminSearch.result', compact('orders', 'query'));
+    }
+
+
 }

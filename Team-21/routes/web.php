@@ -29,6 +29,9 @@ Route::get('/searchbar', function(){
 //return search value
 Route::get('/search', [SearchController::class, 'search'])->name('search');
 
+//return order search value
+Route::get('/admin/search', [SearchController::class, 'searchOrders'])->name('adminsearch');
+
 //return the main page
 Route::get('/nav', function(){
     return view('signup');

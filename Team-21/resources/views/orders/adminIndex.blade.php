@@ -1,6 +1,7 @@
 <div class="container">
     <h2 class="mb-4">All Orders</h2>
     @include('AdminSearch.form')
+    @include('adminsort.form')
 
     <table class="table table-bordered">
         <thead>

@@ -284,3 +284,6 @@ Route::put('/supplier-orders/{supplierOrder}', [SupplierOrderController::class, 
 
 // Delete a supplier order
 Route::delete('/supplier-orders/{supplierOrder}', [SupplierOrderController::class, 'destroy'])->name('supplier-orders.destroy');
+
+
+Route::get('/adminsort/result',[OrderController::class, 'sortResults'])->name('adminsort.result');

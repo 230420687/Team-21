@@ -135,10 +135,19 @@ Route::get('/adminproducts', function(){
     return view('adminViewOfProduct',['products' => $products]);
 });
 
-Route::post('adminproducts', [ProductController::class, 'adminIndex'])->name('adminproducts.index');
+// Route::post('adminproducts', [ProductController::class, 'adminIndex'])->name('adminproducts.index');
 
 // Remove Product from Basket
 Route::delete('/adminproducts/{item}', [ProductController::class, 'remove'])->name('admin.remove');
+
+
+Route::get('/adminusers', [CustomerDetailsController::class, 'index'])->name('adminusers.index');
+
+Route::get('/adminusers/{user_id}',[CustomerDetailsController::class, 'show'])->name('adminusers.show');
+
+Route::delete('/adminusers/{user_id}', [CustomerDetailsController::class, 'remove'])->name('adminusers.remove');
+
+
 
 
 
@@ -196,6 +205,8 @@ Route::post('/productssort',function() {
 
     return view('products', ['products' => $productsorted ]);
 });
+
+
 #Route::get('/Laptops', [ProductController::class, 'showlap']);
 Route::get('/productdesc/{product_id}', [ProductController::class, 'show'] );
 
@@ -236,6 +247,11 @@ Route::get('/products/{product}/reviews', [ReviewController::class, 'show']);
 
 //Display the form for details to be updated
 Route::get('edit', [CustomerDetailsController::class, 'edit'])->name('customer.edit');
+
+//Display the form for admin to edit the Customer details
+Route::get('adminusers/{id}/edit', [CustomerDetailsController::class, 'adminedit'])->name('adminusers.edit');
+
+Route::post('adminusers/{id}/update', [CustomerDetailsController::class, 'adminupdate'])->name('adminuser.update');
 
 //The actual updating of the form
 Route::post('update', [CustomerDetailsController::class, 'update'])->name('customer.update');

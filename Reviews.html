@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Reviews Page</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="Products.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+</head>
+
+<body>
+
+    <header id="main-header">
+        <a href="Home.html">
+            <img src="Images/logo.png" alt="Gadget Grads Logo" class="logo">
+        </a>
+        <h1>GADGET GRADS</h1>
+        <h2>Graduate with better tech!</h2>
+
+        <div class="searchnav">
+            <input type="text" placeholder="Search products and brands" class="search-input">
+        </div>
+
+        <div class="icons">
+            <a href="profile.html" class="user-icon" title="Profile">
+                <img src="Images/user-1.svg" alt="User Icon" height="30">
+            </a>
+            <a href="wishlist.html" class="wishlist-icon" title="Wishlist">
+                <img src="Images/heart.svg" alt="Wishlist Icon" height="30">
+            </a>
+            <a href="cart.html" class="cart-icon" title="Basket">
+                <img src="Images/basket.svg" alt="Cart Icon" height="30">
+            </a>
+        </div>
+    </header>
+
+    <nav class="topnav">
+        <a class="active" href="#Laptops">Laptops/PC</a>
+        <a href="TabletPage.html">Tablets</a>
+        <a href="Accessories.html">Accessories</a>
+        <a href="Phones.html">Phones</a>
+        <a href="Smartwatches.html">Smartwatches</a>
+    </nav>
+
+    <div class="sort-section">
+        <label for="sort">Sort by:</label>
+        <select id="sort" name="sort">
+            <option value="default">Default</option>
+            <option value="price-low-to-high">Price: Low to High</option>
+            <option value="price-high-to-low">Price: High to Low</option>
+            <option value="name-a-to-z">Name: A to Z</option>
+            <option value="name-z-to-a">Name: Z to A</option>
+        </select>
+    </div>
+
+
+    
+   
+
+        <section class="reviews">
+            <h3>See Reviews Here</h3>
+    
+           
+            <div class="review">
+                <div class="review-header">
+                    <img src="Images/default.png" alt="User 1" class="user-profile">
+                    <div class="user">Shayma A. </div>
+                
+                    <div class="rating">
+                        <span>&#9733;&#9733;&#9733;&#9733;&#9734;</span>
+                    </div>
+                </div>
+                <p>This laptop is perfect for University. A bit apprehensive at first but it was worth every penny. It's efficient, lightweight, and has a great battery life.</p>
+                <div class="review-date" data-review-date="2024-09-08T12:00:00Z">Posted: Loading...</div>
+            </div>
+    
+            <div class="review">
+                <div class="review-header">
+                    <img src="Images/default.png" alt="User 2" class="user-profile">
+                    <div class="user">Mariam J.</div>
+                    <div class="rating">
+                        <span>&#9733;&#9733;&#9733;&#9733;&#9733;</span> 
+                    </div>
+                </div>
+                <p>Really happy with these headphones.So glad i waited for the discount to pop up.</p>
+                <div class="review-date" data-review-date="2024-12-04T12:00:00Z">Posted: Loading...</div>
+            </div>
+
+            <div class="review">
+                <div class="review-header">
+                    <img src="Images/default.png" alt="User 3" class="user-profile">
+                    <div class="user">Sabrina R.</div>
+                    <div class="rating">
+                        <span>&#9733;&#9733;&#9733;&#9733;</span> 
+                    </div>
+                </div>
+                <p>The perfect laptop for remote work.Loving it so far!</p>
+                <div class="review-date" data-review-date="2025-01-04T12:00:00Z">Posted: Loading...</div>
+            </div>
+
+            <div class="review">
+                <div class="review-header">
+                    <img src="Images/default.png" alt="User 4" class="user-profile">
+                    <div class="user">John R.</div>
+                    <div class="rating">
+                        <span>&#9733;&#9733;&#9733;&#9733;&#9733;</span> 
+                    </div>
+                </div>
+                <p>Efficient shipping and the tablet is perfect.</p>
+                <div class="review-date" data-review-date="2025-02-04T12:00:00Z">Posted: Loading...</div>
+            </div>
+
+            <div class="review">
+                <div class="review-header">
+                    <img src="Images/default.png" alt="User 5" class="user-profile">
+                    <div class="user">Dilax B.</div>
+                    <div class="rating">
+                        <span>&#9733;&#9733;&#9733;&#9733;&#9733;</span> 
+                    </div>
+                </div>
+                <p>Very happy with this purchase.</p>
+                <div class="review-date" data-review-date="2025-02-24T12:00:00Z">Posted: Loading...</div>
+            </div>
+
+   <div class="review">
+                <div class="review-header">
+                    <img src="Images/default.png" alt="User 5" class="user-profile">
+                    <div class="user">Tameem K.</div>
+                    <div class="rating">
+                        <span>&#9733;&#9733;&#9733;&#9733;&#9733;</span> 
+                    </div>
+                </div>
+                <p>Purchase process was simple and efficient. I used the chatbot for assistance, it was extremely helpful.</p>
+                <div class="review-date" data-review-date="2025-03-04T12:00:00Z">Posted: Loading...</div>
+            </div>
+        
+            <div class="add-review">
+                <h4>Write a Review:</h4>
+                <form id="reviewForm">
+                    <div class="rating-input">
+                        <label for="rating">Your Rating:</label>
+                        <div class="star-rating">
+                            <span class="star" data-value="1">&#9733;</span>
+                            <span class="star" data-value="2">&#9733;</span>
+                            <span class="star" data-value="3">&#9733;</span>
+                            <span class="star" data-value="4">&#9733;</span>
+                            <span class="star" data-value="5">&#9733;</span>
+                        </div>
+                    </div>
+                    <textarea name="review-text" placeholder="Enter your review!" rows="5" required></textarea>
+                    <button type="submit">Submit Review</button>
+                </form>
+            </div>
+
+            
+        </section>
+        <script>
+           
+            function timeAgo(dateString) {
+                const reviewDate = moment(dateString);
+                return reviewDate.fromNow();
+            }
+    
+           
+            document.querySelectorAll('.review-date').forEach(function(element) {
+                const reviewDate = element.getAttribute('data-review-date');
+                element.textContent = 'Posted: ' + timeAgo(reviewDate);
+            });
+            const stars = document.querySelectorAll('.star-rating .star');
+        let selectedRating = 0;
+
+        stars.forEach(function(star) {
+            star.addEventListener('mouseover', function() {
+                const value = parseInt(star.getAttribute('data-value'));
+                highlightStars(value);
+            });
+
+            star.addEventListener('mouseout', function() {
+                highlightStars(selectedRating);
+            });
+
+            star.addEventListener('click', function() {
+                selectedRating = parseInt(star.getAttribute('data-value'));
+                highlightStars(selectedRating);
+            });
+        });
+
+        function highlightStars(rating) {
+            stars.forEach(function(star) {
+                const value = parseInt(star.getAttribute('data-value'));
+                if (value <= rating) {
+                    star.classList.add('active');
+                } else {
+                    star.classList.remove('active');
+                }
+            });
+        }
+        </script>
+    
+    </body>
+    </html>
+    

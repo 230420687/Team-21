@@ -13,6 +13,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
 		 <link rel = "stylesheet"  href="{{ asset('/css/Tablet.css') }}" > 
      <link rel = "stylesheet"  href="{{ asset('/css/UserReview.css') }}" > 
+     <link rel = "stylesheet"  href="{{ asset('/css/Product.css') }}" > 
+     
 
 	</head>
 
@@ -57,6 +59,11 @@
 <!-- sort -->
 <div class="sort-section">
 
+</div>
+<div class="product-container">
+        <img id="product-image" src="/Images\{{$product->img_id}}.jpg" alt="Product Image">
+        <div id="zoom-result"></div>
+        <script src="{{asset('js/Product.js')}}"></script>
 </div>
 <img src= "/Images\{{$product->img_id}}.jpg" alt="Product" class="iPadAir">
 <h3 class="product-title"> {{$product->product_name}}</h3>

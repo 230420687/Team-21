@@ -15,6 +15,8 @@ use App\Http\Controllers\CustomerDetailsController;
 use App\Http\Controllers\SalesReportController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\SupplierOrderController;
+use App\Http\Controllers\WebsiteReviewController;
+
 
 
 Route::get('/', function(){
@@ -244,6 +246,12 @@ Route::post('/products/{product}/updateStock', [ProductController::class, 'updat
 //review page routes 
 Route::post('/products/{product}/reviews', [ReviewController::class, 'store'])->name('reviews.store');
 Route::get('/products/{product}/reviews', [ReviewController::class, 'show']);
+
+//website review page
+Route::post('/websitereviews/store', [WebsiteReviewController::class, 'store'])->name('websitereviews.store');
+
+Route::get('/websitereviews', [WebsiteReviewController::class, 'index'])->name('websitereview.index');
+
 
 //Display the form for details to be updated
 Route::get('edit', [CustomerDetailsController::class, 'edit'])->name('customer.edit');

@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
-		 <link rel = "stylesheet"  href="{{ asset('/css/Tablet.css') }}" > 
+
      <link rel = "stylesheet"  href="{{ asset('/css/UserReview.css') }}" > 
      <link rel = "stylesheet"  href="{{ asset('/css/Product.css') }}" > 
      
@@ -20,54 +20,15 @@
 
 
     <body>
-      <!-- logo -->
-        <header id = "main-header">
-          <a href="Home.html"><img src ="/Images/logo.png" alt="Gadget Grads Logo" class="logo" width="98" height="48"></a>
-        <h1>GADGET GRADS</h1>
-        <h2>Graduate with better tech!</h2>
-
-
- <!-- icons -->
-      <div class="icons">
-          <a href="{{url('/nav')}}" class="user-icon" title="Sign in"><img src="images\user.svg" height="30"></a>
-          <a href="{{url('/wishlist')}}" class="wishlist-icon" title="Wishlist"><img src="{{asset('images/heart.svg')}}" height="30"></a>
-          <a href="{{url('/basket')}}" class="cart-icon" title="Basket"><img src=" images\basket.svg" height="30"></a>
-      </div>
-  </header>
-  <!-- nav bar -->
-  <nav class="nav-bar">
-            <ul>
-                <li><a href="{{url('/home')}}">Home</a></li>
-                <li><a href="{{url('/products')}}">Products</a></li>
-                <li><a href="{{url('/about')}}">About Us</a></li>
-                <li><a href="{{url('/basket')}}">Basket</a></li>
-                <li><a href="{{url('/contact')}}">Contact Us</a></li>
-                
-    
-            </ul>
-        </nav>
-<!-- categories nav-bar -->
-        <nav id = "gadgetGrads">
-        <div class="topnav">
-        <a class="active" href= "{{url('Tablets')}}">Tablets</a>
-      <a href= "{{url('Laptops')}}">Laptops</a>
-      <a href= "{{url('Accessories')}}">Accessories</a>
-      <a href="{{url('Phones')}}">Phones</a>
-      <a href="{{url('Smartwatches')}}">Smartwatches</a>
-    </div>
-</nav>  
-<!-- sort -->
-<div class="sort-section">
-
-</div>
+    @include('components.navbar')
 <div class="product-container">
         <img id="product-image" src="/Images\{{$product->img_id}}.jpg" alt="Product Image">
         <div id="zoom-result"></div>
         <script src="{{asset('js/Product.js')}}"></script>
 </div>
-<img src= "/Images\{{$product->img_id}}.jpg" alt="Product" class="iPadAir">
+
 <h3 class="product-title"> {{$product->product_name}}</h3>
-<p class ="product-price">{{$product->product_price}}</p>
+<p class ="product-price">£{{$product->product_price}}</p>
 <p class ="product-title">{{$product->product_description}}</p>
 
     <!-- Add to Basket -->

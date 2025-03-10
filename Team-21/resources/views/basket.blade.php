@@ -1,50 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Character set and viewport settings for responsive design -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gadget Grads - Basket</title>
-    <!-- Links to external CSS stylesheets -->
-    <link rel="stylesheet" href="{{ asset('css/NavBar.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/LoginPopUp.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/Basket.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/PaymentMethods.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/RemoveItem.css') }}">
-    <link rel="stylesheet" href="{{asset('css/checkout.css')}}">
-    <!-- Link to Google Fonts for custom font -->
-    <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap" rel="stylesheet">
+  <!-- Character set and viewport settings for responsive design -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gadget Grads - Basket</title>
+  <!-- Links to external CSS stylesheets -->
+  <link rel="stylesheet" href="{{ asset('css/LoginPopUp.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/Basket.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/PaymentMethods.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/RemoveItem.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/dark-mode-styles/basket-dark-mode.css') }}">
+  <!-- Link to Google Fonts for custom font -->
+  <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap" rel="stylesheet">
 </head>
-<header>
-        <div class="header-content">
-        <div class="logo-container">
-                <a href="index.html" class="logo">
-                    <img src="{{asset('images/GG_higher-resolution.png')}}" alt="Logo" height="50">
-                </a>
-                <div class="site-info">
-                    <h1 class="title">GADGET GRADS</h1>
-                    <h2 class="subheading">Graduate with better tech!</h2>
-                </div>
 
-            </div>
-            <div class="icons">
-                <a href="{{url('/nav')}}" class="user-icon" title="Sign in"><img src="{{asset('images/user.svg')}}" height="30"></a>
-                <a href="{{url('/wishlist')}}" class="wishlist-icon" title="Wishlist"><img src="{{asset('images/heart.svg')}}" height="30"></a>
-                <a href="{{url('/basket')}}"class="cart-icon" title="Basket"><img src="{{asset('images/basket.svg')}}" height="30"></a>
-        </div>      
-        </div>
-        <!-- Navigation bar with links to various sections -->
-        <nav class="nav-bar">
-            <ul>
-                <li><a href="{{url('/home')}}">Home</a></li>
-                <li><a href="{{url('/products')}}">Products</a></li>
-                <li><a href="{{url('/about')}}">About Us</a></li>
-                <li><a href="{{url('/basket')}}">Basket</a></li>
-                <li><a href="{{url('/contact')}}">Contact Us</a></li>
-            </ul>
-        </nav>
-    </header>
+
 <body>
+@include('components.navbar')
     <div class="container my-5">
         <!-- Basket Header -->
         <h2 class="mb-4">Your Basket (<span id="item-count-header">{{ count($basketItems) }}</span> <span id="item-label">items</span>)</h2>

@@ -30,6 +30,7 @@ Route::get('/searchbar', function(){
 
 //return search value
 Route::get('/search', [SearchController::class, 'search'])->name('search');
+Route::get('/admin/productsearch', [SearchController::class, 'productSearch'])->name('adminproductsearch');
 
 //return order search value
 Route::get('/admin/search', [SearchController::class, 'searchOrders'])->name('adminsearch');
@@ -121,10 +122,13 @@ Route::get('/products', function(){
     $products = DB::table('products')->get();
     return view('products',['products' => $products]);
 });
+
 Route::get('/productdesc', function(){
 
     return view('productdesc');
 })->name("productdesc");
+
+
 
 Route::post('products', [ProductController::class, 'index']
 )->name("products.index");
@@ -137,7 +141,7 @@ Route::get('/adminproducts', function(){
     return view('adminViewOfProduct',['products' => $products]);
 });
 
-// Route::post('adminproducts', [ProductController::class, 'adminIndex'])->name('adminproducts.index');
+Route::post('adminproducts', [ProductController::class, 'adminIndex'])->name('adminproducts.index');
 
 // Remove Product from Basket
 Route::delete('/adminproducts/{item}', [ProductController::class, 'remove'])->name('admin.remove');
@@ -209,8 +213,36 @@ Route::post('/productssort',function() {
 });
 
 
+
+Route::post('/adminproductssort',function() {
+    $products = DB::table('products')->get();
+    $sortby = request('sort');
+    echo $sortby;
+    if($sortby == 'priceasc'){
+        $productsorted = $products->sortBy('product_price');
+    }
+    if($sortby == 'pricedesc'){
+        $productsorted  = $products->sortByDesc('product_price');
+    }
+    if($sortby == 'nameasc'){
+        $productsorted  = $products->sortBy('product_name');
+    }
+    if($sortby == 'namedesc'){
+        $productsorted  = $products->sortByDesc('product_name');
+    }
+    if($sortby == 'default'){
+        $productsorted = $products;
+    }
+
+    return view('adminViewOfProduct', ['products' => $productsorted ]);
+});
+
+
 #Route::get('/Laptops', [ProductController::class, 'showlap']);
 Route::get('/productdesc/{product_id}', [ProductController::class, 'show'] );
+
+Route::get('/adminproductshow/{product_id}', [ProductController::class, 'adminShow']);
+
 
 
 

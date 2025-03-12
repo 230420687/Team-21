@@ -24,6 +24,22 @@ class SearchController extends Controller
         
     }
 
+
+    public function productSearch(Request $request){
+        $request->validate([
+            'query' => 'required|string'
+        ]);
+
+        $query = $request->input('query');
+
+        $products = Product::where('product_name', 'LIKE', "%{$query}%")
+            ->orWhere('product_description', 'LIKE', "%{$query}%")
+            ->get();
+
+        return view('adminproductresult', compact('products', 'query'));
+        
+    }
+
     public function searchOrders(Request $request)
     {
         

@@ -58,6 +58,10 @@ class ProductController extends Controller
         return view('adminproducts.index', $result);
     }
 
+    public function adminShow($product_id){
+        return view('adminproductShow', ['product' => Product::find($product_id)]);
+    }
+
     public function create()
 {
     return view('addingproduct');

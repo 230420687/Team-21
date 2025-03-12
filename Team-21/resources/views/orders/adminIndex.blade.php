@@ -10,6 +10,8 @@
 
 <body>
   @include('components.admin-navbar')
+
+
   <div class="container">
     <h2>All Orders</h2>
     <table class="table table-bordered">

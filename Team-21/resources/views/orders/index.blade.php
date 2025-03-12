@@ -9,7 +9,8 @@
 </head>
 
 <body>
-  @include('components.admin-navbar')
+@include('components.navbar')
+
   @if($orders->isEmpty())
     <p class="alert alert-warning">You have no orders yet.</p>
 @else

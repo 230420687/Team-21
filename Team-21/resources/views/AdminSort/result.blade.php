@@ -1,7 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Table of Orders - Admin</title>
+  <link rel="stylesheet" href="{{asset('css/admin/admin-orders.css')}}">
+</head>
+
+@include('components.admin-navbar')
 <div class="container">
     <h2>Sorted Orders</h2>
-    @include('AdminSearch.form')
-    @include('adminsort.form', ['sortBy' => $sortBy, 'sortOrder' => $sortOrder])
+
 
     @if($orders->isEmpty())
         <p>No orders found.</p>
@@ -26,7 +36,7 @@
                         <td>${{ number_format($order->total_amount, 2) }}</td>
                         <td>{{ \Carbon\Carbon::parse($order->order_date)->format('d M Y, h:i A') }}</td>
                         <td>
-                            <a href="{{ route('orders.show', $order->order_id) }}" class="btn btn-info btn-sm">View</a>
+                            <a href="{{ route('orders.adminShow', $order->order_id) }}" class="btn btn-info btn-sm">View</a>
                         </td>
                     </tr>
                 @endforeach

@@ -66,6 +66,8 @@
       <li><a href="{{ url('/about') }}">About Us</a></li>
       <li><a href="{{ url('/basket') }}">Basket</a></li>
       <li><a href="{{ url('/contact') }}">Contact Us</a></li>
+      <li><a href="{{url('/websitereviews')}}"> Review</a></li>
+
     </ul>
   </nav>
 

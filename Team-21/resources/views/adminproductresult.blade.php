@@ -14,7 +14,7 @@
 </head>
 
 <body>
-  @include('components.navbar')
+@include('components.admin-navbar')
 <body>
     <h1>Search Results for "{{$query}}"</h1>
 
@@ -30,7 +30,7 @@
                 <h3 class="product-title"> {{$product->product_name}}</h3>  
                 <p class ="product-price">{{$product->product_price}}</p>
                 <div class="product-buttons">
-            <button class="view-button" type = "submit" id="viewprod" onclick="window.location='{{url('productdesc',$product->product_id)}}'">View Product</button>
+            <button class="view-button" type = "submit" id="viewprod" onclick="window.location='{{url('adminproductshow',$product->product_id)}}'">View Product</button>
             
                 <!-- Add to Basket -->
                 <div class="card-footer text-center">

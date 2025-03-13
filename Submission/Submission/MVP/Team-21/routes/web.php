@@ -8,6 +8,10 @@ use App\Http\Controllers\BasketController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CustomerDetailsController;
+use App\Http\Controllers\SalesReportController;
+
+
 
 Route::get('/', function(){
     return redirect('/nav');
@@ -172,11 +176,16 @@ Route::post('/productssort',function() {
 #Route::get('/Laptops', [ProductController::class, 'showlap']);
 Route::get('/productdesc/{product_id}', [ProductController::class, 'show'] );
 
+
 //Display the form for details to be updated
-Route::get('/customer/edit', function(){return view('customerUpdate');})->name('customer.edit');
+Route::get('edit', [CustomerDetailsController::class, 'edit'])->name('edit');
 
-//Update the form
-Route::post('/customer/update', [CustomerDetailsController::class, 'update'])->name('customer.update');
+//The actual updating of the form
+Route::post('update', [CustomerDetailsController::class, 'update'])->name('update');
 
-//Delete customer details
-Route::post('/customer/delete', [CustomerDetailsController::class, 'delete'])->name('customer.delete');
+//Deletes the customer's data from the database
+Route::post('delete', [CustomerDetailsController::class, 'delete'])->name('delete');
+
+//Displays the sale report to the admin
+Route::get('/sales-report', [SalesReportController::class, 'report']);
+

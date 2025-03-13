@@ -2,136 +2,75 @@
 
 namespace Tests\Feature;
 
-use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 use App\Models\Product;
+use Illuminate\Foundation\Testing\WithFaker;
 
 class ProductControllerTest extends TestCase
 {
+    use WithFaker;
 
-
-//test admin can create and add products
-    public function create_add_product()
+    /** @test */
+    public function it_displays_all_products()
     {
+        Product::factory()->count(5)->create();
 
-        $data = [
-            'product_name'        => 'iPad Pro',
-            'product_price'       => 999.99,
-            'stock_quantity'      => 100,
-            'product_description' => 'Test product.',
-            'img_id'              => 1,
-            'category_id'         => 2,
-            'created_at'          => '2025-02',  
-            'updated_at'          => '2025-02',  
-        ];
+        $response = $this->get(route('products.index'));
 
-        // POST request
-        $response = $this->post(route('adminproducts.store'), $data);
-
-        // Assert product is added to database
-        $this->assertDatabaseHas('products', [
-            'product_name'        => 'iPad Pro',
-            'product_price'       => 999.99,
-            'stock_quantity'      => 100,
-            'product_description' => 'Test product.',
-            'img_id'              => 1,
-            'category_id'         => 2,
-        ]);
-
-        // Verify redirection and flash message.
-        $response->assertRedirect(route('adminproducts.index'));
-        $response->assertSessionHas('success', 'Product added successfully!');
+        $response->assertStatus(200);
+        $response->assertViewHas('products');
     }
 
-// //Product can't be created with invalid data
-//     public function invalid_data()
-//     {
-//         // Missing fields and wrong data types
-//         $invalidData = [
-//             'product_name'        => '',           
-//             'product_price'       => 'not-a-number',  
-//             'stock_quantity'      => -5,           
-//             'product_description' => '',           
-//             'img_id'              => null,         
-//             'category_id'         => null,         
-//             'created_at'          => '',           
-//             'updated_at'          => '',           
-//         ];
 
-//         // Send POST request with invalid data.
-//         $response = $this->post(route('adminproducts.store'), $invalidData);
 
-//         // Assert errors
-//         $response->assertSessionHasErrors([
-//             'product_name',
-//             'product_price',
-//             'stock_quantity',
-//             'product_description',
-//             'img_id',
-//             'category_id',
-//             'created_at',
-//             'updated_at',
-//         ]);
-//     }
+    /** @test */
+    public function it_removes_a_product()
+    {
+        $product = Product::factory()->create();
 
-// //test admin can update stock quantity
-//     public function update_stock_quantity()
-//     {
-//         // Create an existing product.
-//         $product = Product::factory()->create([
-//             'stock_quantity' => 50,
-//             'product_price'  => 75.00,
-//             'product_name'   => 'Inventory Update Test',
-//         ]);
+        $response = $this->delete(route('admin.remove', $product->product_id));
 
-//         $updateData = [
-//             'product_name'   => $product->product_name,  
-//             'product_price'  => $product->product_price, 
-//             'stock_quantity' => 150,  
-//         ];
+        $response->assertRedirect(route('adminproducts.index'));
+        $this->assertDatabaseMissing('products', ['product_id' => $product->product_id]);
+    }
 
-//         // Send a PATCH request to updateStock
-//         $response = $this->patch(route('adminproducts.updateStock', $product->id), $updateData);
+    // /** @test */
+    // public function it_creates_a_new_product()
+    // {
+    //     $data = [
+    //         'product_name' => 'Test Product',
+    //         'product_price' => 100.50,
+    //         'stock_quantity' => 10,
+    //         'product_description' => 'A test product description.',
+    //         'img_id' => 1,
+    //         'category_id' => 1,
+    //     ];
 
-//         // check product quantity is updated
-//         $this->assertDatabaseHas('products', [
-//             'id'             => $product->id,
-//             'stock_quantity' => 150,
-//         ]);
+    //     $response = $this->post(route('products.store'), $data);
 
-//         // assert redirection and flash message
-//         $response->assertRedirect(route('adminproducts.index'));
-//         $response->assertSessionHas('success', 'Stock updated successfully!');
-//     }
+    //     $response->assertRedirect(route('adminproducts.index'));
+    //     $this->assertDatabaseHas('products', ['product_name' => 'Test Product']);
+    // }
 
-// //test admin can update price of a product
-//     public function update_price()
-//     {
-//         // Create product
-//         $product = Product::factory()->create([
-//             'stock_quantity' => 50,
-//             'product_price'  => 75.00,
-//             'product_name'   => 'Price Update Test',
-//         ]);
+    // /** @test */
+    public function it_updates_stock_and_price()
+    {
+        $product = Product::factory()->create();
 
-//         //update only price
-//         $updateData = [
-//             'product_name'   => $product->product_name, 
-//             'product_price'  => 95.00, 
-//             'stock_quantity' => $product->stock_quantity,   
-//         ];
+        $updateData = [
+            'product_name' => $product->product_name,
+            'product_price' => 150.00,
+            'stock_quantity' => 5,
+        ];
 
-//         // Send a PATCH request to updateStock
-//         $response = $this->patch(route('adminproducts.updateStock', $product->id), $updateData);
+        $response = $this->post(route('products.updateStock', $product->product_id), $updateData);
 
-//         // assert price is updated in database
-//         $this->assertDatabaseHas('products', [
-//             'id'             => $product->id,
-//             'product_price'  => 95.00,
-//         ]);
-
-//         // Verify redirection and flash message.
-//         $response->assertRedirect(route('adminproducts.index'));
-//         $response->assertSessionHas('success', 'Stock updated successfully!');
-//     }
+        $response->assertRedirect(route('adminproducts.index'));
+        $this->assertDatabaseHas('products', [
+            'product_id' => $product->product_id,
+            'product_price' => 150.00,
+            'stock_quantity' => 5,
+        ]);
+    }
 }

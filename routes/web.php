@@ -83,6 +83,14 @@ Route::get('/contact', [ContactController::class, 'show'])->name('contact.show')
 Route::post('/contact', [ContactController::class, 'submit'])->name('contact.submit');
 
 
+Route::get('/addproduct', function(){
+    return view('addproduct');
+})->name('addproduct');
+//Route::view('/addproduct', 'addproduct')->name('addproduct');
+Route::post('/addproduct', [ProductController::class, 'addproduct'])->name('addproduct');
+//Route::post('/addproduct', [ProductController::class, 'submit'])->name('products.submit');
+
+
 
 
 

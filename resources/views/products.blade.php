@@ -91,7 +91,7 @@
   
     <!-- Add to Basket -->
     <div class="card-footer text-center">
-        @if(Auth::check())
+        @if(Auth::check()) <!-- or @if(user is admin?) -->
           <form method="POST" action="{{ route('basket.add') }}">
             @csrf
             <input type="hidden" name="product_id" value="{{ $product->product_id }}">
@@ -102,6 +102,8 @@
           <a href="{{ route('login') }}" class="btn btn-primary">Log in to Add to Basket</a>
         @endif
     </div>
+    <!-- Complete stock order  -->
+    <!-- @if(user is admin?) -->
 </div>
 </div>
 </div>

@@ -28,6 +28,29 @@ class ProductController extends Controller
     }
     public function show($product_id){
 return view('/productdesc', ['product' => Product::find($product_id)]);}
+    
+public function addproduct(Request $request){
+        if($request ->isMethod('post')){
+            {
+                $request->validate([
+                    'name' => 'required|string|max:255',
+                    'price' => 'required|numeric',
+                    'description' => 'required|string',
+                    'quantity' => 'required|integer',
+                    'imgid' => 'required|string',
+                ]);
+        Product::create([
+            'product_name' => $request->name,
+            'product_description' => $request->description,
+            'product_price' => $request->price,
+            'stock_quantity' => $request->quantity,
+            'imgid' => $request->imgid,
+        ]);
+        return redirect()->route('addproduct')->with('success', 'Product added successfully.');
+    }
+}
 
 
+
+}
 }

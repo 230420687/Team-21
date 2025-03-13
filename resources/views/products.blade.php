@@ -91,13 +91,15 @@
   
     <!-- Add to Basket -->
     <div class="card-footer text-center">
-        @if(Auth::check()) <!-- or @if(user is admin?) -->
+       @if(Auth::check() && $product->stock_quantity > 0) <!-- or @if(user is admin?) -->
           <form method="POST" action="{{ route('basket.add') }}">
             @csrf
             <input type="hidden" name="product_id" value="{{ $product->product_id }}">
             <input type="hidden" name="quantity" value="1">
             <button type="submit" class="add-button btn-primary">Add to Basket</button>
           </form>
+        @elseif($product->stock_quantity == 0)
+            <class="btn btn-primary">Out of Stock</a>
         @else
           <a href="{{ route('login') }}" class="btn btn-primary">Log in to Add to Basket</a>
         @endif

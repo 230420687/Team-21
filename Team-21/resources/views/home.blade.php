@@ -15,6 +15,8 @@
 <main>
 @include('components.navbar')
 
+echo bcrypt('password')
+
 <!-- Top Deals Banner Section -->
 <section class="top-deals-banner">
   <!-- Call To Action Banner -->

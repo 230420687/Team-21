@@ -30,7 +30,7 @@ Route::get('/searchbar', function(){
 
 //return search value
 Route::get('/search', [SearchController::class, 'search'])->name('search');
-Route::get('/admin/productsearch', [SearchController::class, 'productSearch'])->name('adminproductsearch');
+Route::get('/adminproduct/search', [SearchController::class, 'productSearch'])->name('adminproductsearch');
 
 //return order search value
 Route::get('/admin/search', [SearchController::class, 'searchOrders'])->name('adminsearch');

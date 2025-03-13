@@ -24,31 +24,31 @@ class LoginController extends Controller
         $request->validate([
             'email' => ['required', 'email'],
             'password' => ['required'],
-            'user_type' => ['required', 'in:customer,admin']
+            'user_type' => ['required', 'in:user,admin']
         ]);
 
         $hashedPassword = Hash::make($request->password);
 
         //checking if it is a customer or admin
-        if($request->user_type === 'customer') {
+        if($request->user_type === 'user') {
 
             if(Auth::guard('web')->attempt(['email' => $request->email, 'password' => $request->password])){
                 $user = Auth::guard('web')->user();
                 // Start session and store user info
                 Session::put('user_id', $user->user_id);
-                Session::put('user_type', 'customer');
+                Session::put('user_type', 'user');
                 Session::put('email', $user->email);
 
                 return redirect('/home')->with('success', 'Logged in successfully');
             }
-        } else {
-            $admin = DB::table('admins')->where('email', $request->email)->first();
-            if($admin && Hash::check($request->password, $admin->user_password)) {
+        } else if($request->user_type === 'admin') {
+            if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password])) {
+                $admin = Auth::guard('admin')->user();
                 // Start session and store admin info
-                Session::put('user_id', $admin->admin_id);
+                Session::put('user_id', $admin->user_id);
                 Session::put('user_type', 'admin');
                 Session::put('email', $admin->email);
-
+        
                 return redirect('/adminproducts')->with('success', 'Logged in successfully');
             }
         }

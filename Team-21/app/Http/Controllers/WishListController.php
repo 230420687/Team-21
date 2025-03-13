@@ -30,7 +30,7 @@ class WishListController extends Controller
         //making sure the user is logged in
         $userId = Auth::id();
         if(!$userId){
-            return redirect()->route('/signup')->with('error', 'Please login to add a product to wishlist');
+            return redirect()->route('login')->with('error', 'Please login to add a product to wishlist');
 
         }
 

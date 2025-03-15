@@ -16,6 +16,7 @@ use App\Http\Controllers\SalesReportController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\SupplierOrderController;
 use App\Http\Controllers\WebsiteReviewController;
+use App\Http\Middleware\RoleMiddleware;
 
 
 
@@ -117,12 +118,13 @@ Route::get('/home',  function(){
 });
 
 
-
+//view for products
 Route::get('/products', function(){
     $products = DB::table('products')->get();
     return view('products',['products' => $products]);
 });
 
+//view for single product
 Route::get('/productdesc', function(){
 
     return view('productdesc');
@@ -134,24 +136,29 @@ Route::post('products', [ProductController::class, 'index']
 )->name("products.index");
 
 
-
-
-Route::get('/adminproducts', function(){
-    $products = DB::table('products')->get();
-    return view('adminViewOfProduct',['products' => $products]);
+//admin view of product listing
+Route::middleware(['auth', RoleMiddleware::class.':admin'])->group(function(){
+    Route::get('/adminproducts', function(){
+        $products = DB::table('products')->get();
+        return view('adminViewOfProduct',['products' => $products]);
+    });
 });
 
-Route::post('adminproducts', [ProductController::class, 'adminIndex'])->name('adminproducts.index');
+//admin view of single product, users
+Route::middleware(['auth', RoleMiddleware::class.':admin'])->group(function(){
+    Route::post('adminproducts', [ProductController::class, 'adminIndex'])->name('adminproducts.index');
 
-// Remove Product from Basket
-Route::delete('/adminproducts/{item}', [ProductController::class, 'remove'])->name('admin.remove');
+    // Remove Product from Basket
+    Route::delete('/adminproducts/{item}', [ProductController::class, 'remove'])->name('admin.remove');
+    
+    
+    Route::get('/adminusers', [CustomerDetailsController::class, 'index'])->name('adminusers.index');
+    
+    Route::get('/adminusers/{user_id}',[CustomerDetailsController::class, 'show'])->name('adminusers.show');
+    
+    Route::delete('/adminusers/{user_id}', [CustomerDetailsController::class, 'remove'])->name('adminusers.remove');
+});
 
-
-Route::get('/adminusers', [CustomerDetailsController::class, 'index'])->name('adminusers.index');
-
-Route::get('/adminusers/{user_id}',[CustomerDetailsController::class, 'show'])->name('adminusers.show');
-
-Route::delete('/adminusers/{user_id}', [CustomerDetailsController::class, 'remove'])->name('adminusers.remove');
 
 
 
@@ -189,6 +196,7 @@ Route::get('/Accessories', function(){
     return view('Accessories', ['products' => $products]);
 })->name("Accessories");
 
+//route to sort products
 Route::post('/productssort',function() {
     $products = DB::table('products')->get();
     $sortby = request('sort');
@@ -212,40 +220,46 @@ Route::post('/productssort',function() {
     return view('products', ['products' => $productsorted ]);
 });
 
-
-
-Route::post('/adminproductssort',function() {
-    $products = DB::table('products')->get();
-    $sortby = request('sort');
-    echo $sortby;
-    if($sortby == 'priceasc'){
-        $productsorted = $products->sortBy('product_price');
-    }
-    if($sortby == 'pricedesc'){
-        $productsorted  = $products->sortByDesc('product_price');
-    }
-    if($sortby == 'nameasc'){
-        $productsorted  = $products->sortBy('product_name');
-    }
-    if($sortby == 'namedesc'){
-        $productsorted  = $products->sortByDesc('product_name');
-    }
-    if($sortby == 'default'){
-        $productsorted = $products;
-    }
-
-    return view('adminViewOfProduct', ['products' => $productsorted ]);
+//admin sort then return the view of product listing
+Route::middleware(['auth', RoleMiddleware::class.':admin'])->group(function(){
+    Route::post('/adminproductssort',function() {
+        $products = DB::table('products')->get();
+        $sortby = request('sort');
+        echo $sortby;
+        if($sortby == 'priceasc'){
+            $productsorted = $products->sortBy('product_price');
+        }
+        if($sortby == 'pricedesc'){
+            $productsorted  = $products->sortByDesc('product_price');
+        }
+        if($sortby == 'nameasc'){
+            $productsorted  = $products->sortBy('product_name');
+        }
+        if($sortby == 'namedesc'){
+            $productsorted  = $products->sortByDesc('product_name');
+        }
+        if($sortby == 'default'){
+            $productsorted = $products;
+        }
+    
+        return view('adminViewOfProduct', ['products' => $productsorted ]);
+    });
 });
+
 
 
 #Route::get('/Laptops', [ProductController::class, 'showlap']);
 Route::get('/productdesc/{product_id}', [ProductController::class, 'show'] );
 
-Route::get('/adminproductshow/{product_id}', [ProductController::class, 'adminShow']);
+//admin view of single product
+Route::middleware(['auth', RoleMiddleware::class.':admin'])->group(function(){
+    Route::get('/adminproductshow/{product_id}', [ProductController::class, 'adminShow']);
+});
 
 
 
 
+//Route to process forget password
 Route::post('/reset-password', [ForgotPasswordController::class, 'resetPassword'])->name('forgot.password.reset');
 
 
@@ -272,8 +286,11 @@ Route::post('/products/store', [ProductController::class, 'store'])->name('produ
 
 
 //upadting stock
-Route::get('/products/{product}/update', [ProductController::class, 'update'])->name('products.update');
-Route::post('/products/{product}/updateStock', [ProductController::class, 'updateStock'])->name('products.updateStock');
+Route::middleware(['auth', RoleMiddleware::class.':admin'])->group(function(){
+    Route::get('/products/{product}/update', [ProductController::class, 'update'])->name('products.update');
+    Route::post('/products/{product}/updateStock', [ProductController::class, 'updateStock'])->name('products.updateStock');
+});
+
 
 //review page routes 
 Route::post('/products/{product}/reviews', [ReviewController::class, 'store'])->name('reviews.store');
@@ -289,9 +306,12 @@ Route::get('/websitereviews', [WebsiteReviewController::class, 'index'])->name('
 Route::get('edit', [CustomerDetailsController::class, 'edit'])->name('customer.edit');
 
 //Display the form for admin to edit the Customer details
-Route::get('adminusers/{id}/edit', [CustomerDetailsController::class, 'adminedit'])->name('adminusers.edit');
+Route::middleware(['auth', RoleMiddleware::class.':admin'])->group(function(){
+    Route::get('adminusers/{id}/edit', [CustomerDetailsController::class, 'adminedit'])->name('adminusers.edit');
 
-Route::post('adminusers/{id}/update', [CustomerDetailsController::class, 'adminupdate'])->name('adminuser.update');
+    Route::post('adminusers/{id}/update', [CustomerDetailsController::class, 'adminupdate'])->name('adminuser.update');
+
+});
 
 //The actual updating of the form
 Route::post('update', [CustomerDetailsController::class, 'update'])->name('customer.update');
@@ -300,46 +320,59 @@ Route::post('update', [CustomerDetailsController::class, 'update'])->name('custo
 Route::post('delete', [CustomerDetailsController::class, 'delete'])->name('delete');
 
 //Displays the sale report to the admin
-Route::get('/sales-report', [SalesReportController::class, 'report']);
+Route::middleware(['auth', RoleMiddleware::class.':admin'])->group(function(){
+    Route::get('/sales-report', [SalesReportController::class, 'report']);
+});
+
+
 
 
 //Displays the orders 
-Route::get('/adminorders', [OrderController::class, 'adminIndex'])->name('orders.adminIndex');
-
 Route::get('/order',[OrderController::class, 'index'])
     ->middleware('auth')
     ->name('orders.index');
 
+//Route to display individual order
 Route::get('/orders/{order_id}',[OrderController::class, 'show'])->name('orders.show');
 
-Route::get('/adminorders/{order_id}',[OrderController::class, 'adminShow'])->name('orders.adminShow');
+//Routes for the admin view of orders 
+Route::middleware(['auth', RoleMiddleware::class.':admin'])->group(function(){
 
-Route::get('/adminorders/{order}/editstatus', [OrderController::class, 'editStatus'])->name('orders.adminEditStatus');
+    Route::get('/adminorders', [OrderController::class, 'adminIndex'])->name('orders.adminIndex');
 
-Route::post('/adminorders/{order}/updatestatus', [OrderController::class, 'updateStatus'])->name('orders.adminUpdateStatus');
+    Route::get('/adminorders/{order_id}',[OrderController::class, 'adminShow'])->name('orders.adminShow');
 
+    Route::get('/adminorders/{order}/editstatus', [OrderController::class, 'editStatus'])->name('orders.adminEditStatus');
+
+    Route::post('/adminorders/{order}/updatestatus', [OrderController::class, 'updateStatus'])->name('orders.adminUpdateStatus');
+
+});
+
+//Route for returning an item
 Route::post('/orders/{item}/return', [OrderController::class, 'returnItem'])->name('orders.returnItem');
 
 // Display the form to create a new supplier order
-Route::get('/supplier-orders/create', [SupplierOrderController::class, 'create'])->name('supplierorders.create');
+Route::middleware(['auth', RoleMiddleware::class.':admin'])->group(function(){
+    Route::get('/supplier-orders/create', [SupplierOrderController::class, 'create'])->name('supplierorders.create');
 
-// Store a new supplier order
-Route::post('/supplier-orders', [SupplierOrderController::class, 'store'])->name('supplier-orders.store');
+    // Store a new supplier order
+    Route::post('/supplier-orders', [SupplierOrderController::class, 'store'])->name('supplier-orders.store');
 
-// List all supplier orders
-Route::get('/supplier-orders', [SupplierOrderController::class, 'index'])->name('supplier-orders.index');
+    // List all supplier orders
+    Route::get('/supplier-orders', [SupplierOrderController::class, 'index'])->name('supplier-orders.index');
 
-// Show a specific supplier order
-Route::get('/supplier-orders/{supplierOrder}', [SupplierOrderController::class, 'show'])->name('supplier-orders.show');
+    // Show a specific supplier order
+    Route::get('/supplier-orders/{supplierOrder}', [SupplierOrderController::class, 'show'])->name('supplier-orders.show');
 
-// Display the form to edit a supplier order
-Route::get('/supplier-orders/{supplierOrder}/edit', [SupplierOrderController::class, 'edit'])->name('supplier-orders.edit');
+    // Display the form to edit a supplier order
+    Route::get('/supplier-orders/{supplierOrder}/edit', [SupplierOrderController::class, 'edit'])->name('supplier-orders.edit');
 
-// Update a supplier order
-Route::put('/supplier-orders/{supplierOrder}', [SupplierOrderController::class, 'update'])->name('supplier-orders.update');
+    // Update a supplier order
+    Route::put('/supplier-orders/{supplierOrder}', [SupplierOrderController::class, 'update'])->name('supplier-orders.update');
 
-// Delete a supplier order
-Route::delete('/supplier-orders/{supplierOrder}', [SupplierOrderController::class, 'destroy'])->name('supplier-orders.destroy');
+    // Delete a supplier order
+    Route::delete('/supplier-orders/{supplierOrder}', [SupplierOrderController::class, 'destroy'])->name('supplier-orders.destroy');
 
-
-Route::get('/adminsort/result',[OrderController::class, 'sortResults'])->name('adminsort.result');
+    //routing for admin sort
+    Route::get('/adminsort/result',[OrderController::class, 'sortResults'])->name('adminsort.result');
+});

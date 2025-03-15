@@ -6,14 +6,25 @@ body {
     padding: 20px;
 }
 
-h1, h2, h3 {
-    color: #2D4059;
+h1,
+h2,
+h3 {
+    color: #2d4059;
     margin: 0;
 }
 
-h1 { font-size: 24px; font-family: 'Dela Gothic One', sans-serif; }
-h2 { font-size: 10px; font-family: 'Dela Gothic One', sans-serif; }
-h3 { font-size: 15px; font-family: sans-serif; }
+h1 {
+    font-size: 24px;
+    font-family: "Dela Gothic One", sans-serif;
+}
+h2 {
+    font-size: 10px;
+    font-family: "Dela Gothic One", sans-serif;
+}
+h3 {
+    font-size: 15px;
+    font-family: sans-serif;
+}
 
 /* Header */
 #main-header {
@@ -31,7 +42,7 @@ h3 { font-size: 15px; font-family: sans-serif; }
 
 /* Navigation Bar */
 .topnav {
-    background-color: #2D4059;
+    background-color: #2d4059;
     overflow: hidden;
     text-align: center;
     margin-top: 15px;
@@ -44,7 +55,7 @@ h3 { font-size: 15px; font-family: sans-serif; }
     text-decoration: none;
     font-size: 14px;
     margin: 0 73px;
-    font-family: 'Inter', sans-serif;
+    font-family: "Inter", sans-serif;
 }
 
 .topnav a:hover {
@@ -53,16 +64,12 @@ h3 { font-size: 15px; font-family: sans-serif; }
 }
 
 .icons {
-    position:static;
+    position: static;
     top: 30px;
     right: 100px;
     display: flex;
     gap: 10px;
 }
-
-
-
-
 
 /* Buttons */
 button {
@@ -74,20 +81,21 @@ button {
 }
 
 .view-button {
-    background-color: #2D4059;
+    background-color: #2d4059;
     color: #ffffff;
     display: block;
     margin-bottom: 10px;
 }
 
-.view-button:hover, .add-button:hover {
+.view-button:hover,
+.add-button:hover {
     background-color: white;
     color: black;
 }
 
 .add-button {
     background-color: white;
-    border: 2px solid #2D4059;
+    border: 2px solid #2d4059;
 }
 
 /* Review Section */
@@ -142,7 +150,8 @@ textarea {
     color: #ccc;
 }
 
-.star-rating span.active, .star-rating span:hover,
+.star-rating span.active,
+.star-rating span:hover,
 .star-rating span:hover ~ span {
     color: #f39c12;
 }
@@ -159,7 +168,8 @@ table {
     border-collapse: collapse;
 }
 
-table th, table td {
+table th,
+table td {
     padding: 10px;
     text-align: left;
     border-bottom: 1px solid #ddd;
@@ -194,7 +204,8 @@ table th, table td {
     font-weight: bold;
 }
 
-.close:hover, .close:focus {
+.close:hover,
+.close:focus {
     color: black;
     text-decoration: none;
     cursor: pointer;

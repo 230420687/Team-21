@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Navbar Preview</title>
-  <link rel="stylesheet" href="{{ asset('/css/navbar2.css') }}">
+  <link rel="stylesheet" href="{{ asset('/css/NavBar.css') }}">
   <link rel="stylesheet" href="{{ asset('/css/dark-mode-styles/navbar-dark-mode.css') }}">
   <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Inter:wght@400;700&display=swap" rel="stylesheet">
 </head>
+
 <body>
   <header id="main-header">
     <div class="header-left">
@@ -33,20 +35,21 @@
           <img src="{{ asset('images/user-1.svg') }}" height="30" alt="User icon">
         </a>
         <div class="dropdown-content">
+
           @auth
-            <a href="{{ url('/profile') }}">My Profile</a>
-            <a href="{{ url('/orders') }}">My Orders</a>
-            <a href="{{ url('/settings') }}">Settings</a>
-            <a href="{{ route('logout') }}" 
-               onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-              Logout
-            </a>
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-              @csrf
-            </form>
+          <a href="{{ url('/customer-dash') }}">My Profile</a>
+          <a href="{{ url('/orders') }}">My Orders</a>
+          <a href="{{ url('/settings') }}">Settings</a>
+          <a href="{{ route('logout') }}"
+            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+            Logout
+          </a>
+          <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+            @csrf
+          </form>
           @else
-            <a href="{{ route('login') }}">Login</a>
-            <a href="{{ route('register') }}">Register</a>
+          <a href="#" class="login-btn">Login</a>
+          <a href="#" class="register-btn">Register</a>
           @endauth
         </div>
       </div>
@@ -62,24 +65,18 @@
   <nav class="nav-bar">
     <ul>
       <li><a href="{{ url('/home') }}">Home</a></li>
-      <li><a href="{{ url('/products') }}">Products</a></li>
+      <li class="has-dropdown">
+        <a href="{{ url('/products') }}">Products</a>
       <li><a href="{{ url('/about') }}">About Us</a></li>
       <li><a href="{{ url('/basket') }}">Basket</a></li>
       <li><a href="{{ url('/contact') }}">Contact Us</a></li>
-      <li><a href="{{url('/websitereviews')}}"> Review</a></li>
-
+      <li><a href="{{url('/websitereviews')}}">Review</a></li>
     </ul>
   </nav>
 
-  <nav id="gadgetGrads">
-    <div class="topnav">
-      <a class="active" href="{{ url('Tablets') }}">Tablets</a>
-      <a href="{{ url('Laptops') }}">Laptops</a>
-      <a href="{{ url('Accessories') }}">Accessories</a>
-      <a href="{{ url('Phones') }}">Phones</a>
-      <a href="{{ url('Smartwatches') }}">Smartwatches</a>
-    </div>
-  </nav>
+
   @include('components.dark-mode')
+  @include('components.authbutton')
 </body>
+
 </html>

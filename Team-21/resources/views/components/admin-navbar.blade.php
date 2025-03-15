@@ -4,14 +4,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Favicons -->
+  <link rel="icon" type="image/x-icon" href="{{ asset('images/favicon/favicon.ico') }}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('images/favicon/favicon-32x32.png') }}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/favicon/favicon-16x16.png') }}">
   <title>Admin Navbar</title>
-  <link rel="stylesheet" href="{{asset('css/admin/admin-navbar.css')}}">
+  <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Lobster&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ asset('css/admin/admin-navbar.css') }}">
 </head>
 
 <body>
   <header id="main-header">
     <a href="{{ url('/home') }}"><img src="{{ asset('Images/logo.png') }}" alt="Gadget Grads Logo" class="logo" width="98" height="48"></a>
-    <h1>GADGET GRADS</h1>
+    <h1 class="h1">GADGET GRADS</h1>
     <h2>Graduate with better tech!</h2>
 
     <div class="searchnav">
@@ -21,30 +26,30 @@
       </form>
     </div>
 
-     <div class = "searchnav">
+    <div class="searchnav">
       <form action="{{route('adminsearch')}}" method="GET">
-          <input type="text" class="search-bar" name="query" placeholder="Search for orders by id or status" required>
-          <button class="search-button" type="submit">Search</button>
+        <input type="text" class="search-bar" name="query" placeholder="Search for orders by id or status" required>
+        <button class="search-button" type="submit">Search</button>
       </form>
 
-      <div class ="searchnav" >
+      <div class="searchnav">
         <form method="GET" action="{{ route('adminsort.result') }}" class="mb-3">
-            <label for="sort_by">Sort by:</label>
-            <select name="sort_by" id="sort_by" class="form-control d-inline-block w-auto">
-                <option value="order_id" {{ request('sort_by') == 'order_id' ? 'selected' : '' }}>Order ID</option>
-                <option value="total_amount" {{ request('sort_by') == 'total_amount' ? 'selected' : '' }}>Price</option>
-                <option value="order_status" {{ request('sort_by') == 'order_status' ? 'selected' : '' }}>Alphabetical (Order Status)</option>
-            </select>
+          <label for="sort_by">Sort by:</label>
+          <select name="sort_by" id="sort_by" class="form-control d-inline-block w-auto">
+            <option value="order_id" {{ request('sort_by') == 'order_id' ? 'selected' : '' }}>Order ID</option>
+            <option value="total_amount" {{ request('sort_by') == 'total_amount' ? 'selected' : '' }}>Price</option>
+            <option value="order_status" {{ request('sort_by') == 'order_status' ? 'selected' : '' }}>Alphabetical (Order Status)</option>
+          </select>
 
-            <select name="sort_order" id="sort_order" class="form-control d-inline-block w-auto">
-                <option value="asc" {{ request('sort_order') == 'asc' ? 'selected' : '' }}>Ascending</option>
-                <option value="desc" {{ request('sort_order') == 'desc' ? 'selected' : '' }}>Descending</option>
-            </select>
+          <select name="sort_order" id="sort_order" class="form-control d-inline-block w-auto">
+            <option value="asc" {{ request('sort_order') == 'asc' ? 'selected' : '' }}>Ascending</option>
+            <option value="desc" {{ request('sort_order') == 'desc' ? 'selected' : '' }}>Descending</option>
+          </select>
 
-            <button type="submit" class="btn btn-primary">Sort</button>
+          <button type="submit" class="btn btn-primary">Sort</button>
         </form>
       </div>
-</div>
+    </div>
   </header>
 
   <nav class="navigation">
@@ -55,9 +60,23 @@
       <li><a href="{{ url('/sales-report') }}">Reports</a></li>
       <li><a href="{{ url('/supplier-orders')}}">Supplier Orders</a></li>
       <li><a href="{{ url('/adminusers') }}">Manage Customers</a></li>
-      <li><a href="{{ url('/logout') }}">Logout</a></li>
+      <li><a href="{{ url('/home') }}">Return to Homepage</a></li>
+      @if(Auth::check())
+      <li>
+        <a href="{{ route('logout') }}"
+          onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+          Logout
+        </a>
+        <form id="logout-form" action="{{ route('logout') }}" method="POST">
+          @csrf
+        </form>
+      </li>
+      @else
+      <li><a href="#" class="login-btn">Login</a></li>
+      @endif
     </ul>
   </nav>
+  @include('components.authbutton')
 </body>
 
 </html>

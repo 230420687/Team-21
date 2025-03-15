@@ -3,7 +3,12 @@
 
 <head>
   <meta charset="utf-8" />
-  <title> Tablet Page </title>
+  <!-- Favicons -->
+  <link rel="icon" type="image/x-icon" href="{{ asset('images/favicon/favicon.ico') }}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('images/favicon/favicon-32x32.png') }}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/favicon/favicon-16x16.png') }}">
+
+  <title>Tablet Page</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,11 +19,19 @@
   <link rel="stylesheet" href="{{ asset('/css/navbar.css') }}">
   <link rel="stylesheet" href="{{ asset('/css/ProductListing.css') }}">
   <link rel="stylesheet" href="{{ asset('/css/dark-mode-styles/ProductListing-dark-mode.css') }}">
-  </head>
+</head>
 
 <body>
   @include('components.navbar')
-
+  <nav id="gadgetGrads">
+    <div class="topnav">
+      <a class="active" href="{{ url('Tablets') }}">Tablets</a>
+      <a href="{{ url('Laptops') }}">Laptops</a>
+      <a href="{{ url('Accessories') }}">Accessories</a>
+      <a href="{{ url('Phones') }}">Phones</a>
+      <a href="{{ url('Smartwatches') }}">Smartwatches</a>
+    </div>
+  </nav>
   <!-- sorting function -->
   <div class="sort-section">
     <label for="sort">Sort by:</label>
@@ -62,16 +75,16 @@
           </div>
           <!-- Add to Wishlist -->
           <div class="card-footer text-center">
-              @if(Auth::check())
-                <form method="POST" action="{{ route('wishlist.add') }}">
-                  @csrf
-                  <input type="hidden" name="product_id" value="{{ $product->product_id }}">
-                  <input type="hidden" name="quantity" value="1">
-                  <button type="submit" class="add-button btn-primary">Add to Wishlist</button>
-                </form>
-              @else
-                <a href="{{ route('login') }}" class="btn btn-primary">Log in to Add to Wishlist</a>
-              @endif
+            @if(Auth::check())
+            <form method="POST" action="{{ route('wishlist.add') }}">
+              @csrf
+              <input type="hidden" name="product_id" value="{{ $product->product_id }}">
+              <input type="hidden" name="quantity" value="1">
+              <button type="submit" class="add-button btn-primary">Add to Wishlist</button>
+            </form>
+            @else
+            <a href="{{ route('login') }}" class="btn btn-primary">Log in to Add to Wishlist</a>
+            @endif
           </div>
         </div>
       </div>
